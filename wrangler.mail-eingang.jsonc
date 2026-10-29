@@ -27,6 +27,6 @@
   "vars": {
     "JW_DEV_URL": "https://orga.jnsw.de",
     // Empfängeradresse → Projekt in jw-dev; alles andere landet unzugeordnet auf der Seite „Anfragen“.
-    "ZUORDNUNG": { "mymvz@jnsw.de": "mymvz-wordpress" },
+    "ZUORDNUNG": { "mymvz@jnsw.de": "mymvz-wordpress", "mymvz-eingang@jnsw.de": "mymvz-wordpress" },
   },
 }

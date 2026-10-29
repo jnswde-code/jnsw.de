@@ -4,10 +4,12 @@ E-Mail für `jnsw.de` läuft vollständig über Cloudflare; Mailgun ist abgelös
 
 - **Versand** (Bestätigungs-E-Mails, `app/mail.ts`): Cloudflare Email Service (Email Sending).
   Absender ist `service@jnsw.de` (überschreibbar mit dem Secret `MAIL_FROM`).
-- **Empfang** (Mail-Eingang): Cloudflare Email Routing. Ein eigenes Postfach gibt es nicht.
-  Ein Catch-all gibt jede Adresse `…@jnsw.de` an den Worker `jnsw-mail-eingang`
-  (`worker/mail-eingang.ts`). Der leitet eine Kopie an die eigene Adresse weiter und liefert
-  die Mail als Kundenanfrage an jw-dev.
+- **Empfang** (Mail-Eingang): Cloudflare Email Routing. Postfach ist die eigene iCloud-Adresse:
+  Der Catch-all leitet jede Adresse `…@jnsw.de` direkt dorthin weiter, ohne Worker, damit keine
+  Mail an einem Fehler im Worker hängt. iCloud leitet per Regel Mails an `mymvz@jnsw.de` weiter an
+  `mymvz-eingang@jnsw.de`; nur diese Adresse geht an den Worker `jnsw-mail-eingang`
+  (`worker/mail-eingang.ts`), der die Mail als Kundenanfrage an jw-dev liefert. `KOPIE_AN` ist
+  dabei nicht gesetzt: eine Kopie zurück an iCloud würde dort wieder weitergeleitet (Schleife).
 
 ## Versand im Worker
 
@@ -61,7 +63,7 @@ Secrets (`npx wrangler secret put <NAME> --config wrangler.mail-eingang.jsonc`):
 
 | Secret                    | Inhalt                                                            |
 | ------------------------- | ----------------------------------------------------------------- |
-| `KOPIE_AN`                | eigene Adresse für die Kopie (bestätigte Zieladresse)             |
+| `KOPIE_AN`                | Adresse für eine Kopie; nicht gesetzt, solange iCloud weiterleitet |
 | `JW_DEV_TOKEN`            | Inhalt von `token-mail` des Dienstes (`jw-dev link --mail`: Pfad) |
 | `CF_ACCESS_CLIENT_ID`     | Service Token der Access-Anwendung vor `orga.jnsw.de`             |
 | `CF_ACCESS_CLIENT_SECRET` | dazu das Secret (eigenes Service Token, getrennt widerrufbar)     |
