@@ -18,8 +18,7 @@
     {
       "binding": "DB",
       "database_name": "jnsw-mail-eingang",
-      // Nach `npx wrangler d1 create jnsw-mail-eingang` die ausgegebene ID eintragen.
-      "database_id": "00000000-0000-0000-0000-000000000000",
+      "database_id": "8814d83e-cf5d-42cd-82d3-9cb37ec5b97f",
       "migrations_dir": "worker/mail-eingang-migrations",
     },
   ],

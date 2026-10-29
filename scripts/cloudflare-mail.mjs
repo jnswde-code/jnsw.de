@@ -220,8 +220,9 @@ async function main() {
   const routing = await cf("GET", `/zones/${zoneId}/email/routing`).catch(() => null);
   if (routing?.enabled) console.log(`Email Routing ist an (Status ${routing.status}).`);
   else
+    // Für die Zone selbst ohne `name`: die API nimmt dort nur Subdomains (422 „must be a subdomain“).
     await tun("Schalte Email Routing ein (MX/SPF/DKIM von Cloudflare)", () =>
-      cf("POST", `/zones/${zoneId}/email/routing/dns`, { name: opts.domain }),
+      cf("POST", `/zones/${zoneId}/email/routing/dns`, {}),
     );
 
   // 3. Zieladresse und Catch-all
