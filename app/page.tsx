@@ -95,6 +95,8 @@ export default async function Home() {
         <a href="https://github.com/jnswde-ctrl" target="_blank" rel="noreferrer">
           GitHub
         </a>
+        <a href="/impressum">Impressum</a>
+        <a href="/datenschutz">Datenschutz</a>
       </footer>
     </main>
   );
