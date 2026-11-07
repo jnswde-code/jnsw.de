@@ -3,8 +3,7 @@ name: CI
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
+  pull_request: {}
 
 permissions:
   contents: read
@@ -38,4 +37,4 @@ jobs:
         run: npm run build
 
       - name: Tests ausführen
-        run: npm test
+        run: npm run test:unit
