@@ -20,15 +20,18 @@ npm run format:check
 npm run lint
 npm run build
 npm test
+npm run test:unit
 ```
 
-`npm run dev` startet die lokale vinext-Entwicklung. `npm run build` erzeugt den Produktions-Build. `npm test` führt die verlässlichen Node-Unit-Tests aus; Worker-Render-Integrationstests werden erst mit einer Cloudflare-kompatiblen Testlaufzeit ergänzt.
+`npm run dev` startet die lokale vinext-Entwicklung. `npm run build` erzeugt den Produktions-Build. `npm test` baut zuerst und führt danach die Unit-Tests aus. `npm run test:unit` führt ausschließlich die Node-Unit-Tests aus und ist damit die build-freie Prüfung für schnelle Rückmeldung; Worker-Render-Integrationstests werden erst mit einer Cloudflare-kompatiblen Testlaufzeit ergänzt.
+
+Der konkrete Bauplan der ersten Welle steht in [`docs/bauplan.md`](docs/bauplan.md).
 
 ## Erste Welle
 
-Die erste Welle erhält die bestehende Next.js-/vinext-Struktur unverändert; es kommt kein zweites Framework und keine zusätzliche Toolchain hinzu. Die öffentliche Präsentation bleibt vom bestehenden Backend getrennt, das Backend wird in dieser Welle nicht umgebaut.
+Die erste Welle erhält die bestehende Next.js-/vinext-Struktur unverändert; es kommt kein zweites Framework und keine zusätzliche Toolchain hinzu. Die bestehende Startseite in `app/page.tsx` bleibt die Plattformoberfläche und wird durch Sitzung und Community dynamisch gerendert; das bestehende Backend mit Datenbank, Worker und Hosting bleibt wie bisher angebunden.
 
-Rechtsseiten (etwa Impressum und Datenschutz) werden in dieser Welle als Entwürfe ergänzt. Vor einer Veröffentlichung brauchen sie bestätigte Betreiber- und Verarbeitungsangaben; Entwürfe gelten nicht als veröffentlichungsfertig.
+Rechtsseiten (`/impressum` und `/datenschutz`) werden in dieser Welle als Entwürfe ergänzt. Sie sind über die gemeinsame Komponente `app/LegalPage.tsx` zustandslose Serverkomponenten ohne eigenen Backendzugriff. Ihre Metadaten setzen `noindex, nofollow`. Ein statischer Gesamtexport ist nicht eingerichtet. Vor einer Veröffentlichung brauchen sie bestätigte Betreiber- und Verarbeitungsangaben; Entwürfe gelten nicht als veröffentlichungsfertig.
 
 ## Qualitätsworkflow
 
