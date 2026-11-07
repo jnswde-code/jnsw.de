@@ -24,6 +24,12 @@ npm test
 
 `npm run dev` startet die lokale vinext-Entwicklung. `npm run build` erzeugt den Produktions-Build. `npm test` führt die verlässlichen Node-Unit-Tests aus; Worker-Render-Integrationstests werden erst mit einer Cloudflare-kompatiblen Testlaufzeit ergänzt.
 
+## Erste Welle
+
+Die erste Welle erhält die bestehende Next.js-/vinext-Struktur unverändert; es kommt kein zweites Framework und keine zusätzliche Toolchain hinzu. Die öffentliche Präsentation bleibt vom bestehenden Backend getrennt, das Backend wird in dieser Welle nicht umgebaut.
+
+Rechtsseiten (etwa Impressum und Datenschutz) werden in dieser Welle als Entwürfe ergänzt. Vor einer Veröffentlichung brauchen sie bestätigte Betreiber- und Verarbeitungsangaben; Entwürfe gelten nicht als veröffentlichungsfertig.
+
 ## Qualitätsworkflow
 
 Jede Änderung an `main` und jeder Pull Request wird automatisch geprüft. Die CI installiert die Abhängigkeiten reproduzierbar und führt Lint, Produktions-Build sowie die Test-Suite aus.
