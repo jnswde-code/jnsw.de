@@ -4,6 +4,10 @@
 
 Oberflächenänderungen werden zusätzlich zu automatisierten Tests auf einer echten, lokalen Browseransicht geprüft. Die Prüfung dient dem Erkennen von Layoutfehlern, Überläufen und nicht sichtbaren Interaktionszuständen.
 
+## Liefernachweise
+
+Das ursprüngliche Lieferpaket enthält Screenshots, Lighthouse-Rohdaten und einen Bericht über 56 Tests. Das sind historische Liefernachweise. Aktuelle Prüfungen werden mit Commit und Laufzeit im jeweiligen PR dokumentiert; fehlende Google-, Browser- oder Lighthouse-Prüfungen bleiben ausdrücklich offen.
+
 ## Lokale Vorschau bereitstellen
 
 In einem eigenen Terminal im Projektverzeichnis starten:
@@ -22,6 +26,9 @@ Bei jeder betroffenen Oberfläche werden mindestens diese Ansichten kontrolliert
 | ------- | ------: | -------------------------------------------------------------------------------------------- |
 | Desktop | 1440 px | Lesbarkeit, Flächenhierarchie, Abstände, vollständige Interaktionszustände                   |
 | Mobil   |  390 px | Kein horizontaler Überlauf, mindestens 44 px große Bedienelemente, keine überdeckten Inhalte |
+| Mobil   |  375 px | Kein horizontaler Überlauf, mindestens 44 px große Bedienelemente, keine überdeckten Inhalte |
+
+Jede Ansicht wird in beiden Farbschemata geprüft (Umschalter in der Navigation oder Emulation von `prefers-color-scheme`). Dabei kontrollieren: kein Aufblitzen des falschen Schemas beim Laden, Formularelemente und Scrollleisten passen zum Schema, Glasflächen bleiben lesbar.
 
 Zusätzlich prüfen, sofern vorhanden:
 

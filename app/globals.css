@@ -963,8 +963,14 @@ footer {
     margin-left: 0;
   }
   .case-study-sections article {
-    grid-template-columns: 34px 1fr;
+    grid-template-columns: 34px minmax(0, 1fr);
     padding: 28px 0 34px;
+  }
+  .case-study-sections h2 {
+    overflow-wrap: anywhere;
+  }
+  .subpage > .community-section h1 {
+    overflow-wrap: anywhere;
   }
   .site-footer span:nth-child(2) {
     display: none;
