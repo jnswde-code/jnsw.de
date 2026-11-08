@@ -61,12 +61,12 @@ Mails wird in D1 nach 30 Tagen geleert, die übrigen Felder bleiben als Nachweis
 
 Secrets (`npx wrangler secret put <NAME> --config wrangler.mail-eingang.jsonc`):
 
-| Secret                    | Inhalt                                                            |
-| ------------------------- | ----------------------------------------------------------------- |
+| Secret                    | Inhalt                                                             |
+| ------------------------- | ------------------------------------------------------------------ |
 | `KOPIE_AN`                | Adresse für eine Kopie; nicht gesetzt, solange iCloud weiterleitet |
-| `JW_DEV_TOKEN`            | Inhalt von `token-mail` des Dienstes (`jw-dev link --mail`: Pfad) |
-| `CF_ACCESS_CLIENT_ID`     | Service Token der Access-Anwendung vor `orga.jnsw.de`             |
-| `CF_ACCESS_CLIENT_SECRET` | dazu das Secret (eigenes Service Token, getrennt widerrufbar)     |
+| `JW_DEV_TOKEN`            | Inhalt von `token-mail` des Dienstes (`jw-dev link --mail`: Pfad)  |
+| `CF_ACCESS_CLIENT_ID`     | Service Token der Access-Anwendung vor `orga.jnsw.de`              |
+| `CF_ACCESS_CLIENT_SECRET` | dazu das Secret (eigenes Service Token, getrennt widerrufbar)      |
 
 Einrichten:
 

@@ -5,8 +5,7 @@
   position: relative;
   display: grid;
   grid-template-rows: auto minmax(0, 1fr) auto minmax(24px, 1fr);
-  background:
-    radial-gradient(circle at 88% 4%, rgba(49, 87, 255, 0.55), transparent 31%), var(--ink);
+  background: radial-gradient(circle at 88% 4%, var(--glow), transparent 31%), var(--ink);
   color: var(--paper);
 }
 .tools-page:after {
@@ -66,7 +65,7 @@
 .tools-directory-heading > p:last-child {
   margin: 0;
   font-size: 12px;
-  color: rgba(244, 240, 231, 0.7);
+  color: var(--text-strong);
 }
 .tool-row {
   width: 100%;
@@ -85,12 +84,18 @@
   transition:
     background-color 0.18s,
     color 0.18s,
-    padding 0.18s;
+    padding 0.18s,
+    scale 0.18s;
+}
+@media (hover: hover) and (pointer: fine) {
+  .tool-row:hover {
+    scale: 1.01;
+  }
 }
 .tool-row:hover,
 .tool-row:focus-visible {
   background: var(--acid);
-  color: var(--ink);
+  color: var(--on-acid);
   padding: 0 16px;
 }
 .tool-row:focus-visible {
@@ -125,7 +130,7 @@
   overflow: hidden;
 }
 .tool-dialog::backdrop {
-  background: rgba(8, 8, 10, 0.72);
+  background: var(--overlay);
   backdrop-filter: blur(7px);
 }
 .tool-dialog[open] .tool-workspace {
@@ -134,9 +139,9 @@
 .tool-workspace {
   position: absolute;
   inset: 3.2vw;
-  background: #0d0d10;
-  border: 1px solid rgba(244, 240, 231, 0.28);
-  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.55);
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  box-shadow: 0 28px 90px var(--shadow);
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
   overflow: hidden;
@@ -163,7 +168,7 @@
   text-transform: uppercase;
 }
 .workspace-privacy span {
-  color: var(--acid);
+  color: var(--acid-text);
   margin-right: 8px;
 }
 .workspace-close {
@@ -187,7 +192,7 @@
 .workspace-close:hover,
 .workspace-close:focus-visible {
   background: var(--acid);
-  color: var(--ink);
+  color: var(--on-acid);
 }
 .workspace-close:focus-visible {
   outline: 3px solid var(--blue);
@@ -216,7 +221,7 @@
   display: flex;
   gap: 18px;
   background: transparent;
-  color: rgba(244, 240, 231, 0.42);
+  color: var(--text-faint);
   font:
     10px "DM Mono",
     monospace;
@@ -248,7 +253,7 @@
 .workspace-modes button:focus-visible {
   background: var(--acid);
   border-color: var(--acid);
-  color: var(--ink);
+  color: var(--on-acid);
 }
 .workspace-modes button:focus-visible {
   outline: 3px solid var(--blue);
@@ -269,7 +274,7 @@
 .workspace-choice > p:not(.eyebrow) {
   max-width: 620px;
   margin: 0 0 30px;
-  color: rgba(244, 240, 231, 0.68);
+  color: var(--muted);
   font-size: 14px;
   line-height: 1.55;
 }
@@ -293,7 +298,7 @@
 }
 .workspace-choice-grid button:hover,
 .workspace-choice-grid button:focus-visible {
-  border-color: var(--acid);
+  border-color: var(--acid-text);
   background: var(--surface-raised);
 }
 .workspace-choice-grid button:focus-visible {
@@ -303,7 +308,7 @@
 .workspace-choice-grid .eyebrow {
   grid-column: 1/-1;
   margin: 0;
-  color: rgba(244, 240, 231, 0.58);
+  color: var(--text-soft);
 }
 .workspace-choice-grid strong {
   align-self: end;
@@ -313,14 +318,14 @@
 .workspace-choice-grid span:not(.eyebrow) {
   grid-column: 1/-1;
   max-width: 31ch;
-  color: rgba(244, 240, 231, 0.66);
+  color: var(--muted);
   font-size: 13px;
   line-height: 1.5;
 }
 .workspace-choice-grid b {
   align-self: end;
   font-size: 26px;
-  color: var(--acid);
+  color: var(--acid-text);
 }
 .workspace-file-selection {
   max-width: 920px;
@@ -337,7 +342,7 @@
 .workspace-file-selection > p:not(.eyebrow) {
   max-width: 620px;
   margin: 0 0 30px;
-  color: rgba(244, 240, 231, 0.68);
+  color: var(--muted);
   font-size: 14px;
   line-height: 1.55;
 }
@@ -350,7 +355,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 12px;
-  color: rgba(244, 240, 231, 0.62);
+  color: var(--muted);
   font:
     9px "DM Mono",
     monospace;
@@ -379,7 +384,7 @@
 .workspace-story-lead {
   max-width: 620px;
   margin: 0 0 34px;
-  color: rgba(244, 240, 231, 0.68);
+  color: var(--muted);
   font-size: 14px;
   line-height: 1.55;
 }
@@ -395,7 +400,7 @@
   border-bottom: 1px solid var(--line);
 }
 .workspace-story dt {
-  color: var(--acid);
+  color: var(--acid-text);
   font:
     10px "DM Mono",
     monospace;
@@ -404,7 +409,7 @@
 .workspace-story dd {
   margin: 0;
   max-width: 600px;
-  color: rgba(244, 240, 231, 0.76);
+  color: var(--text-strong);
   font-size: 14px;
   line-height: 1.55;
 }
@@ -429,7 +434,7 @@
 .rename-intro > p:not(.eyebrow) {
   max-width: 640px;
   margin: 0 0 30px;
-  color: rgba(244, 240, 231, 0.68);
+  color: var(--muted);
   font-size: 14px;
   line-height: 1.55;
 }
@@ -449,7 +454,7 @@
 .rename-fields label {
   display: grid;
   gap: 8px;
-  color: rgba(244, 240, 231, 0.7);
+  color: var(--text-strong);
   font:
     9px "DM Mono",
     monospace;
@@ -485,7 +490,7 @@
   font:
     9px "DM Mono",
     monospace;
-  color: rgba(244, 240, 231, 0.55);
+  color: var(--text-soft);
 }
 .rename-preview div {
   min-width: 0;
@@ -516,10 +521,10 @@
 }
 .wizard-progress button.is-active .wizard-step-number,
 .wizard-progress button.is-complete .wizard-step-number {
-  color: var(--acid);
+  color: var(--acid-text);
 }
 .wizard-progress button.is-complete {
-  color: rgba(244, 240, 231, 0.72);
+  color: var(--text-strong);
   cursor: pointer;
 }
 .wizard-progress button:focus-visible {
@@ -547,7 +552,7 @@
 .wizard-step > p:not(.eyebrow) {
   max-width: 560px;
   margin: 0 0 30px;
-  color: rgba(244, 240, 231, 0.68);
+  color: var(--muted);
   font-size: 14px;
   line-height: 1.55;
 }
@@ -562,13 +567,13 @@
   width: 100%;
   min-height: 145px;
   padding: 22px;
-  border: 1px dashed rgba(244, 240, 231, 0.4);
+  border: 1px dashed var(--line-strong);
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-rows: 1fr 1fr;
   column-gap: 18px;
   text-align: left;
-  background: rgba(244, 240, 231, 0.025);
+  background: var(--wash);
   color: var(--paper);
   cursor: pointer;
 }
@@ -576,7 +581,7 @@
   grid-row: 1/3;
   align-self: center;
   font-size: 36px;
-  color: var(--acid);
+  color: var(--acid-text);
 }
 .file-drop-button strong {
   align-self: end;
@@ -589,12 +594,12 @@
     9px "DM Mono",
     monospace;
   text-transform: uppercase;
-  color: rgba(244, 240, 231, 0.55);
+  color: var(--text-soft);
 }
 .file-drop-button:hover,
 .file-drop-button:focus-visible {
-  border-color: var(--acid);
-  background: rgba(184, 255, 98, 0.06);
+  border-color: var(--acid-text);
+  background: var(--acid-wash);
 }
 .file-drop-button:focus-visible {
   outline: 3px solid var(--blue);
@@ -616,7 +621,7 @@
 .button:hover:not(:disabled),
 .button:focus-visible {
   background: var(--acid);
-  color: var(--ink);
+  color: var(--on-acid);
 }
 .button:focus-visible,
 .file-actions button:focus-visible {
@@ -633,7 +638,7 @@
   margin: 24px 0;
   display: grid;
   gap: 8px;
-  color: rgba(244, 240, 231, 0.7);
+  color: var(--text-strong);
   font:
     9px "DM Mono",
     monospace;
@@ -652,7 +657,7 @@
   text-transform: none;
 }
 .merge-file-name small {
-  color: rgba(244, 240, 231, 0.52);
+  color: var(--text-soft);
   font:
     9px "DM Mono",
     monospace;
@@ -678,7 +683,7 @@
   text-transform: uppercase;
 }
 .merge-order summary span {
-  color: rgba(244, 240, 231, 0.55);
+  color: var(--text-soft);
 }
 .merge-order[open] summary {
   border-bottom: 1px solid var(--line);
@@ -690,15 +695,15 @@
   margin: 16px 0;
 }
 .button-primary:disabled {
-  border-color: #354c21;
-  background: #354c21;
-  color: rgba(244, 240, 231, 0.62);
+  border-color: var(--tint-green-strong);
+  background: var(--tint-green-strong);
+  color: var(--muted);
   opacity: 1;
 }
 .button-primary {
   border-color: var(--acid);
   background: var(--acid);
-  color: var(--ink);
+  color: var(--on-acid);
   min-width: 220px;
 }
 .wizard-actions {
@@ -714,7 +719,7 @@
     9px "DM Mono",
     monospace;
   text-transform: uppercase;
-  color: rgba(244, 240, 231, 0.55);
+  color: var(--text-soft);
 }
 .wizard-actions-split {
   justify-content: space-between;
@@ -739,7 +744,7 @@
   font:
     10px "DM Mono",
     monospace;
-  color: rgba(244, 240, 231, 0.5);
+  color: var(--text-faint);
 }
 .file-name {
   min-width: 0;
@@ -756,7 +761,7 @@
     9px "DM Mono",
     monospace;
   text-transform: uppercase;
-  color: rgba(244, 240, 231, 0.5);
+  color: var(--text-faint);
 }
 .file-actions {
   display: flex;
@@ -790,7 +795,7 @@
   font-size: 56px;
   font-weight: 600;
   letter-spacing: -0.08em;
-  color: var(--acid);
+  color: var(--acid-text);
 }
 .merge-summary div {
   display: flex;
@@ -805,7 +810,7 @@
     9px "DM Mono",
     monospace;
   text-transform: uppercase;
-  color: rgba(244, 240, 231, 0.55);
+  color: var(--text-soft);
 }
 .merge-status {
   display: flex;
@@ -815,7 +820,7 @@
   padding: 14px 18px;
   border: 1px solid var(--line);
   border-top: 0;
-  background: rgba(244, 240, 231, 0.04);
+  background: var(--wash);
 }
 .merge-status p {
   margin: 0;
@@ -823,13 +828,13 @@
   line-height: 1.45;
 }
 .merge-status-error {
-  background: rgba(255, 91, 52, 0.16);
+  background: var(--danger-wash);
 }
 .merge-status-success {
-  background: rgba(184, 255, 98, 0.1);
+  background: var(--acid-wash);
 }
 .merge-status-processing {
-  background: rgba(49, 87, 255, 0.18);
+  background: var(--blue-wash);
 }
 .status-spinner {
   width: 17px;
@@ -841,7 +846,7 @@
   flex: 0 0 auto;
 }
 .wizard-inline-error {
-  color: #ffd5c9;
+  color: var(--danger-text);
   font-size: 12px;
 }
 .pdf-tool-page {
@@ -851,8 +856,7 @@
 }
 .pdf-tool-hero {
   padding: 26px 3.2vw 45px;
-  background:
-    radial-gradient(circle at 90% 5%, rgba(49, 87, 255, 0.58), transparent 35%), var(--ink);
+  background: radial-gradient(circle at 90% 5%, var(--glow), transparent 35%), var(--ink);
 }
 .pdf-tool-heading {
   display: grid;
@@ -897,7 +901,7 @@
   border-top: 1px solid var(--line);
 }
 .privacy-callout > span {
-  color: var(--acid);
+  color: var(--acid-text);
 }
 .privacy-callout h2 {
   margin: 0 0 15px;
@@ -937,7 +941,7 @@
 .wohnung-tool > p:not(.eyebrow) {
   max-width: 620px;
   margin: 0 0 26px;
-  color: rgba(244, 240, 231, 0.68);
+  color: var(--muted);
   font-size: 14px;
   line-height: 1.55;
 }
@@ -954,7 +958,7 @@
 .wohnung-filters label {
   display: grid;
   gap: 6px;
-  color: rgba(244, 240, 231, 0.7);
+  color: var(--text-strong);
   font:
     9px "DM Mono",
     monospace;
@@ -976,7 +980,7 @@
 .wohnung-filter-count {
   margin-left: auto;
   align-self: center;
-  color: rgba(244, 240, 231, 0.55);
+  color: var(--text-soft);
   font:
     9px "DM Mono",
     monospace;
@@ -1011,7 +1015,7 @@
   text-transform: uppercase;
 }
 .wohnung-badge-platform {
-  color: rgba(244, 240, 231, 0.6);
+  color: var(--text-soft);
 }
 .wohnung-badge-status {
   padding: 2px 7px;
@@ -1022,12 +1026,12 @@
   border-color: var(--blue);
 }
 .wohnung-status-interessant {
-  color: var(--ink);
+  color: var(--on-acid);
   background: var(--acid);
   border-color: var(--acid);
 }
 .wohnung-status-abgelehnt {
-  color: rgba(244, 240, 231, 0.45);
+  color: var(--text-faint);
 }
 .wohnung-status-vorbereitet,
 .wohnung-status-versendet {
@@ -1041,7 +1045,7 @@
   margin: 0;
 }
 .wohnung-card-facts dt {
-  color: rgba(244, 240, 231, 0.5);
+  color: var(--text-faint);
   font:
     9px "DM Mono",
     monospace;
@@ -1079,7 +1083,7 @@
 }
 .wohnung-empty {
   grid-column: 1/-1;
-  color: rgba(244, 240, 231, 0.6);
+  color: var(--text-soft);
   font-size: 13px;
 }
 .wohnung-letter-backdrop {
@@ -1090,7 +1094,7 @@
   align-items: center;
   justify-content: center;
   padding: 24px;
-  background: rgba(8, 8, 10, 0.72);
+  background: var(--overlay);
   backdrop-filter: blur(6px);
 }
 .wohnung-letter-modal {
@@ -1099,9 +1103,9 @@
   max-height: 80vh;
   display: flex;
   flex-direction: column;
-  border: 1px solid rgba(244, 240, 231, 0.28);
-  background: #0d0d10;
-  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.55);
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  box-shadow: 0 28px 90px var(--shadow);
 }
 .wohnung-letter-modal header {
   display: grid;
@@ -1124,7 +1128,7 @@
   white-space: pre-wrap;
   font-size: 13px;
   line-height: 1.6;
-  color: rgba(244, 240, 231, 0.85);
+  color: var(--text-strong);
 }
 @media (max-width: 720px) {
   .wohnung-filters {
@@ -1160,16 +1164,16 @@
 .support-ki-tool > p:not(.eyebrow) {
   max-width: 620px;
   margin: 0 0 20px;
-  color: rgba(244, 240, 231, 0.68);
+  color: var(--muted);
   font-size: 14px;
   line-height: 1.55;
 }
 .support-ki-error {
   margin: 0 0 20px;
   padding: 12px 16px;
-  border: 1px solid rgba(255, 91, 52, 0.4);
-  background: rgba(255, 91, 52, 0.16);
-  color: #ffd5c9;
+  border: 1px solid var(--danger-line);
+  background: var(--danger-wash);
+  color: var(--danger-text);
   font-size: 13px;
   line-height: 1.5;
 }
@@ -1188,16 +1192,16 @@
     10px "DM Mono",
     monospace;
   text-transform: uppercase;
-  color: rgba(244, 240, 231, 0.55);
+  color: var(--text-soft);
 }
 .support-ki-state-connected {
-  color: var(--acid);
+  color: var(--acid-text);
 }
 .support-ki-state-connecting {
   color: var(--blue);
 }
 .support-ki-state-error {
-  color: #ff8a68;
+  color: var(--danger);
 }
 .support-ki-messages {
   flex: 1;
@@ -1210,7 +1214,7 @@
   gap: 10px;
 }
 .support-ki-empty {
-  color: rgba(244, 240, 231, 0.55);
+  color: var(--text-soft);
   font-size: 13px;
 }
 .support-ki-message {
@@ -1228,7 +1232,7 @@
     9px "DM Mono",
     monospace;
   text-transform: uppercase;
-  color: rgba(244, 240, 231, 0.5);
+  color: var(--text-faint);
 }
 .support-ki-message-me {
   align-self: flex-end;
@@ -1325,7 +1329,7 @@
     min-height: 76px;
     padding: 13px 16px;
     grid-template-columns: 1fr auto;
-    background: #0d0d10;
+    background: var(--surface);
   }
   .tool-workspace-header h2 {
     font-size: 1.25rem;
@@ -1350,7 +1354,7 @@
     padding: 16px 20px;
     border-right: 0;
     border-bottom: 1px solid var(--line);
-    background: #0d0d10;
+    background: var(--surface);
   }
   .wizard-progress button {
     min-width: 0;
@@ -1481,6 +1485,9 @@
 @media (prefers-reduced-motion: reduce) {
   .tool-row {
     transition: none;
+  }
+  .tool-row:hover {
+    scale: none;
   }
   .tool-dialog[open] .tool-workspace {
     animation: none;
