@@ -80,9 +80,10 @@ npm run db:generate
 
 Die verbindliche Gestaltungsrichtlinie liegt in `docs/design-richtlinie.md`; sie geht allgemeinen Stilpräferenzen vor.
 
-- Oberfläche durchgehend dunkel: `--ink`, `--surface` und `--surface-raised` sind die einzigen Flächenebenen.
-- `--paper` ist Text- und Kontrastfarbe, kein großflächiger Hintergrund.
-- `--blue` steht für Fokus und räumliche Tiefe; `--acid` für primäre Aktionen und kleine Statussignale.
+- Zwei Farbschemata (hell und dunkel) über `color-scheme`, `light-dark()` und `data-theme` am `<html>`; Umschalter in `app/ThemeToggle.tsx`, Logik und Inline-Skript in `app/theme.ts`. Das dunkle Schema ist die Referenz.
+- Farben nur über semantische Tokens aus `app/globals.css` (`--ink`, `--surface`, `--surface-raised`, `--paper`, Textabstufungen, `--line`); neue Farben als Paar `--dunkel-*`/`--hell-*` plus Token ergänzen, keine Rohwerte in Komponenten.
+- `--blue` steht für Fokus und räumliche Tiefe; `--acid` ist die Fläche primärer Aktionen (Text darauf `--on-acid`), `--acid-text` die Akzentfarbe für Text, Rahmen und Statussignale.
+- Zeigerfolger in `app/CursorGlow.tsx` und Hover-Skalierung sind dekorativ, nur bei feinem Zeiger und nie bei `prefers-reduced-motion: reduce`.
 - Der Seitenhintergrund muss zwischen Abschnitten fließend bleiben. Keine harten Farbwechsel, die getrennte Seiten suggerieren.
 - Das feste Menü bleibt beim Scrollen sichtbar, kennzeichnet den aktuellen Abschnitt und respektiert Tastaturfokus sowie `prefers-reduced-motion`.
 - Den PDF-Dialog als Referenz für dunkle Arbeitsflächen, feine Linien und Interaktionszustände verwenden.
@@ -114,7 +115,7 @@ Vor Abschluss einer Änderung mindestens die relevanten Prüfungen ausführen:
 - `npm run db:generate`, wenn `db/schema.ts` geändert wurde; die Migration anschließend prüfen
 - Funktionsänderungen erhalten passende neue oder angepasste automatisierte Tests; ist das nicht sinnvoll möglich, wird der Grund im PR dokumentiert.
 
-Frontend-Änderungen auf Desktop und Mobil visuell prüfen. Für die Scroll-Plattform zusätzlich kontrollieren: Menü bleibt sichtbar, aktive Abschnittsmarkierung folgt dem Scrollen, jeder Menüpunkt fokussiert den korrekten Abschnitt und es entstehen keine Seitenwechsel.
+Frontend-Änderungen auf Desktop und Mobil sowie in beiden Farbschemata visuell prüfen. Für die Scroll-Plattform zusätzlich kontrollieren: Menü bleibt sichtbar, aktive Abschnittsmarkierung folgt dem Scrollen, jeder Menüpunkt fokussiert den korrekten Abschnitt und es entstehen keine Seitenwechsel.
 
 ## GitHub-Workflow
 
