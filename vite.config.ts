@@ -28,6 +28,8 @@ export default defineConfig(async () => {
       vinext(),
       sites(),
       cloudflare({
+        // Produktionsbuild: JNSW_WRANGLER_CONFIG=wrangler.production.jsonc.
+        configPath: process.env.JNSW_WRANGLER_CONFIG || undefined,
         viteEnvironment: { name: "rsc", childEnvironments: ["ssr"] },
         config: localBindingConfig,
       }),

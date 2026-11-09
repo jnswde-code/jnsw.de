@@ -1,11 +1,9 @@
 name: Deploy production (self-hosted Cloudflare)
 
-# Manuell ausgelöst, bewusst NICHT automatisch bei jedem Push nach main.
-# Grund: Diese Pipeline deployt auf ein eigenständiges Cloudflare-Setup
-# (wrangler.production.jsonc), das erst nach Einrichtung der echten D1-
-# Datenbank, des R2-Buckets und der Secrets (siehe
-# docs/cloudflare-self-hosting.md) einsatzbereit ist. Danach kann der
-# `on:`-Block bei Bedarf um `push: { branches: [main] }` ergänzt werden.
+# Der Branch `deploy` bildet den Stand der Live-Seite ab. Veröffentlicht wird
+# im Normalfall über den Cloudflare-Build-Trigger auf diesem Branch. Dieser
+# Workflow ist nur der manuelle Ersatzweg und braucht die Repo-Secrets
+# CLOUDFLARE_API_TOKEN und CLOUDFLARE_ACCOUNT_ID.
 on:
   workflow_dispatch: {}
 
@@ -31,6 +29,8 @@ jobs:
 
       - name: Anwendung bauen
         run: npm run build
+        env:
+          JNSW_WRANGLER_CONFIG: wrangler.production.jsonc
 
       - name: D1-Migrationen auf Produktion anwenden
         uses: cloudflare/wrangler-action@v3
@@ -44,4 +44,6 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: deploy --config wrangler.production.jsonc
+          # Ohne --config: Wrangler nimmt die vom Build erzeugte Konfiguration
+          # samt Assets (.wrangler/deploy/config.json → dist/server/wrangler.json).
+          command: deploy
