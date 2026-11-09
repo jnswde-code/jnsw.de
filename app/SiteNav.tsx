@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { ThemeToggle } from "./ThemeToggle";
 
 const links = [
   ["Tools", "tools"],
@@ -30,7 +31,10 @@ export function SiteNav() {
   }, []);
 
   function scrollToSection(id: string) {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    document
+      .getElementById(id)
+      ?.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
   }
 
   return (
@@ -62,8 +66,11 @@ export function SiteNav() {
           </a>
         ))}
       </div>
-      <span className="availability">
-        <i /> Verfügbar für ausgewählte Projekte
+      <span className="nav-aside">
+        <span className="availability">
+          <i /> Verfügbar für ausgewählte Projekte
+        </span>
+        <ThemeToggle />
       </span>
     </nav>
   );
