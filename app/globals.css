@@ -1,14 +1,205 @@
 ﻿@import url("https://fonts.googleapis.com/css2?family=DM+Mono&family=Manrope:wght@400;500;600;700;800&display=swap");
 @import "tailwindcss";
+/*
+  Farbsystem: zwei Wertesätze (dunkel = Referenz, hell), ein Satz semantischer Tokens.
+  `color-scheme` entscheidet, welcher Wertesatz gilt: ohne `data-theme` folgt die Seite
+  dem System, `data-theme="hell|dunkel"` am <html> überschreibt das. Browser ohne
+  light-dark() bleiben beim dunklen Wertesatz.
+*/
 :root {
-  --ink: #08080a;
-  --surface: #0d0d10;
-  --surface-raised: #15151a;
-  --paper: #f4f0e7;
-  --blue: #3157ff;
-  --acid: #b8ff62;
-  --line: rgba(244, 240, 231, 0.18);
-  --muted: rgba(244, 240, 231, 0.68);
+  /* Rohwerte dunkel */
+  --dunkel-ink: #08080a;
+  --dunkel-bg-mid: #0b0b0f;
+  --dunkel-bg-end: #101015;
+  --dunkel-surface: #0d0d10;
+  --dunkel-surface-raised: #15151a;
+  --dunkel-surface-glass: rgba(21, 21, 26, 0.7);
+  --dunkel-paper: #f4f0e7;
+  --dunkel-text-strong: rgba(244, 240, 231, 0.76);
+  --dunkel-muted: rgba(244, 240, 231, 0.68);
+  --dunkel-text-soft: rgba(244, 240, 231, 0.6);
+  --dunkel-text-faint: rgba(244, 240, 231, 0.5);
+  --dunkel-line: rgba(244, 240, 231, 0.18);
+  --dunkel-line-strong: rgba(244, 240, 231, 0.3);
+  --dunkel-highlight: rgba(255, 255, 255, 0.02);
+  --dunkel-wash: rgba(244, 240, 231, 0.04);
+  --dunkel-blue: #3157ff;
+  --dunkel-blue-soft: rgba(49, 87, 255, 0.8);
+  --dunkel-blue-wash: rgba(49, 87, 255, 0.18);
+  --dunkel-acid: #b8ff62;
+  --dunkel-acid-text: #b8ff62;
+  --dunkel-acid-line: rgba(184, 255, 98, 0.6);
+  --dunkel-acid-wash: rgba(184, 255, 98, 0.08);
+  --dunkel-tint-blue: #111b45;
+  --dunkel-tint-green: #14200c;
+  --dunkel-tint-green-strong: #354c21;
+  --dunkel-danger: #ff9f8a;
+  --dunkel-danger-text: #ffd5c9;
+  --dunkel-danger-line: rgba(255, 91, 52, 0.4);
+  --dunkel-danger-wash: rgba(255, 91, 52, 0.16);
+  --dunkel-glow: rgba(49, 87, 255, 0.55);
+  --dunkel-glow-soft: rgba(49, 87, 255, 0.22);
+  --dunkel-glow-faint: rgba(49, 87, 255, 0.1);
+  --dunkel-glow-acid: rgba(184, 255, 98, 0.07);
+  --dunkel-overlay: rgba(8, 8, 10, 0.72);
+  --dunkel-glass-top: rgba(8, 8, 10, 0.92);
+  --dunkel-glass-bottom: rgba(8, 8, 10, 0.62);
+  --dunkel-glass-line: rgba(244, 240, 231, 0);
+  --dunkel-shadow: rgba(0, 0, 0, 0.55);
+  --dunkel-cursor-ring: rgba(184, 255, 98, 0.7);
+  --dunkel-cursor-glow: rgba(49, 87, 255, 0.28);
+
+  /* Rohwerte hell */
+  --hell-ink: #f4f0e7;
+  --hell-bg-mid: #efebe1;
+  --hell-bg-end: #e9e4d8;
+  --hell-surface: #ece7db;
+  --hell-surface-raised: #fbfaf6;
+  --hell-surface-glass: rgba(251, 250, 246, 0.72);
+  --hell-paper: #0b0b0e;
+  --hell-text-strong: rgba(11, 11, 14, 0.8);
+  --hell-muted: rgba(11, 11, 14, 0.74);
+  --hell-text-soft: rgba(11, 11, 14, 0.66);
+  --hell-text-faint: rgba(11, 11, 14, 0.6);
+  --hell-line: rgba(11, 11, 14, 0.16);
+  --hell-line-strong: rgba(11, 11, 14, 0.32);
+  --hell-highlight: rgba(255, 255, 255, 0.5);
+  --hell-wash: rgba(11, 11, 14, 0.04);
+  --hell-blue: #2340d6;
+  --hell-blue-soft: rgba(35, 64, 214, 0.3);
+  --hell-blue-wash: rgba(35, 64, 214, 0.12);
+  --hell-acid: #a9f24f;
+  --hell-acid-text: #3a6600;
+  --hell-acid-line: rgba(58, 102, 0, 0.5);
+  --hell-acid-wash: rgba(58, 102, 0, 0.08);
+  --hell-tint-blue: #dde3fb;
+  --hell-tint-green: #e3f1cc;
+  --hell-tint-green-strong: #cfe0b4;
+  --hell-danger: #a3251c;
+  --hell-danger-text: #8f1d15;
+  --hell-danger-line: rgba(163, 37, 28, 0.4);
+  --hell-danger-wash: rgba(255, 91, 52, 0.12);
+  --hell-glow: rgba(49, 87, 255, 0.22);
+  --hell-glow-soft: rgba(49, 87, 255, 0.1);
+  --hell-glow-faint: rgba(49, 87, 255, 0.06);
+  --hell-glow-acid: rgba(120, 190, 40, 0.1);
+  --hell-overlay: rgba(244, 240, 231, 0.7);
+  --hell-glass-top: rgba(244, 240, 231, 0.94);
+  --hell-glass-bottom: rgba(244, 240, 231, 0.78);
+  --hell-glass-line: rgba(11, 11, 14, 0.1);
+  --hell-shadow: rgba(11, 11, 14, 0.22);
+  --hell-cursor-ring: rgba(35, 64, 214, 0.6);
+  --hell-cursor-glow: rgba(35, 64, 214, 0.16);
+
+  /* Semantische Tokens: Standard ist der dunkle Wertesatz */
+  --ink: var(--dunkel-ink);
+  --bg-mid: var(--dunkel-bg-mid);
+  --bg-end: var(--dunkel-bg-end);
+  --surface: var(--dunkel-surface);
+  --surface-raised: var(--dunkel-surface-raised);
+  --surface-glass: var(--dunkel-surface-glass);
+  --paper: var(--dunkel-paper);
+  --text-strong: var(--dunkel-text-strong);
+  --muted: var(--dunkel-muted);
+  --text-soft: var(--dunkel-text-soft);
+  --text-faint: var(--dunkel-text-faint);
+  --line: var(--dunkel-line);
+  --line-strong: var(--dunkel-line-strong);
+  --highlight: var(--dunkel-highlight);
+  --wash: var(--dunkel-wash);
+  --blue: var(--dunkel-blue);
+  --blue-soft: var(--dunkel-blue-soft);
+  --blue-wash: var(--dunkel-blue-wash);
+  --acid: var(--dunkel-acid);
+  --acid-text: var(--dunkel-acid-text);
+  --acid-line: var(--dunkel-acid-line);
+  --acid-wash: var(--dunkel-acid-wash);
+  --on-acid: var(--dunkel-ink);
+  --tint-blue: var(--dunkel-tint-blue);
+  --tint-green: var(--dunkel-tint-green);
+  --tint-green-strong: var(--dunkel-tint-green-strong);
+  --danger: var(--dunkel-danger);
+  --danger-text: var(--dunkel-danger-text);
+  --danger-line: var(--dunkel-danger-line);
+  --danger-wash: var(--dunkel-danger-wash);
+  --glow: var(--dunkel-glow);
+  --glow-soft: var(--dunkel-glow-soft);
+  --glow-faint: var(--dunkel-glow-faint);
+  --glow-acid: var(--dunkel-glow-acid);
+  --overlay: var(--dunkel-overlay);
+  --glass-top: var(--dunkel-glass-top);
+  --glass-bottom: var(--dunkel-glass-bottom);
+  --glass-line: var(--dunkel-glass-line);
+  --glass-blur: 14px;
+  --shadow: var(--dunkel-shadow);
+  --cursor-ring: var(--dunkel-cursor-ring);
+  --cursor-glow: var(--dunkel-cursor-glow);
+
+  color-scheme: light dark;
+  accent-color: var(--blue);
+}
+@supports (color: light-dark(#000, #fff)) {
+  :root {
+    --ink: light-dark(var(--hell-ink), var(--dunkel-ink));
+    --bg-mid: light-dark(var(--hell-bg-mid), var(--dunkel-bg-mid));
+    --bg-end: light-dark(var(--hell-bg-end), var(--dunkel-bg-end));
+    --surface: light-dark(var(--hell-surface), var(--dunkel-surface));
+    --surface-raised: light-dark(var(--hell-surface-raised), var(--dunkel-surface-raised));
+    --surface-glass: light-dark(var(--hell-surface-glass), var(--dunkel-surface-glass));
+    --paper: light-dark(var(--hell-paper), var(--dunkel-paper));
+    --text-strong: light-dark(var(--hell-text-strong), var(--dunkel-text-strong));
+    --muted: light-dark(var(--hell-muted), var(--dunkel-muted));
+    --text-soft: light-dark(var(--hell-text-soft), var(--dunkel-text-soft));
+    --text-faint: light-dark(var(--hell-text-faint), var(--dunkel-text-faint));
+    --line: light-dark(var(--hell-line), var(--dunkel-line));
+    --line-strong: light-dark(var(--hell-line-strong), var(--dunkel-line-strong));
+    --highlight: light-dark(var(--hell-highlight), var(--dunkel-highlight));
+    --wash: light-dark(var(--hell-wash), var(--dunkel-wash));
+    --blue: light-dark(var(--hell-blue), var(--dunkel-blue));
+    --blue-soft: light-dark(var(--hell-blue-soft), var(--dunkel-blue-soft));
+    --blue-wash: light-dark(var(--hell-blue-wash), var(--dunkel-blue-wash));
+    --acid: light-dark(var(--hell-acid), var(--dunkel-acid));
+    --acid-text: light-dark(var(--hell-acid-text), var(--dunkel-acid-text));
+    --acid-line: light-dark(var(--hell-acid-line), var(--dunkel-acid-line));
+    --acid-wash: light-dark(var(--hell-acid-wash), var(--dunkel-acid-wash));
+    --tint-blue: light-dark(var(--hell-tint-blue), var(--dunkel-tint-blue));
+    --tint-green: light-dark(var(--hell-tint-green), var(--dunkel-tint-green));
+    --tint-green-strong: light-dark(var(--hell-tint-green-strong), var(--dunkel-tint-green-strong));
+    --danger: light-dark(var(--hell-danger), var(--dunkel-danger));
+    --danger-text: light-dark(var(--hell-danger-text), var(--dunkel-danger-text));
+    --danger-line: light-dark(var(--hell-danger-line), var(--dunkel-danger-line));
+    --danger-wash: light-dark(var(--hell-danger-wash), var(--dunkel-danger-wash));
+    --glow: light-dark(var(--hell-glow), var(--dunkel-glow));
+    --glow-soft: light-dark(var(--hell-glow-soft), var(--dunkel-glow-soft));
+    --glow-faint: light-dark(var(--hell-glow-faint), var(--dunkel-glow-faint));
+    --glow-acid: light-dark(var(--hell-glow-acid), var(--dunkel-glow-acid));
+    --overlay: light-dark(var(--hell-overlay), var(--dunkel-overlay));
+    --glass-top: light-dark(var(--hell-glass-top), var(--dunkel-glass-top));
+    --glass-bottom: light-dark(var(--hell-glass-bottom), var(--dunkel-glass-bottom));
+    --glass-line: light-dark(var(--hell-glass-line), var(--dunkel-glass-line));
+    --shadow: light-dark(var(--hell-shadow), var(--dunkel-shadow));
+    --cursor-ring: light-dark(var(--hell-cursor-ring), var(--dunkel-cursor-ring));
+    --cursor-glow: light-dark(var(--hell-cursor-glow), var(--dunkel-cursor-glow));
+  }
+  /* Nicht-Farbwerte des hellen Schemas: weniger Unschärfe, damit Glas nicht matschig wirkt */
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dunkel"]) {
+      --glass-blur: 10px;
+    }
+  }
+  :root[data-theme="hell"] {
+    color-scheme: light;
+    --glass-blur: 10px;
+  }
+}
+/* Ohne light-dark() bleibt alles dunkel, auch Formularelemente und Scrollleisten */
+@supports not (color: light-dark(#000, #fff)) {
+  :root {
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dunkel"] {
+  color-scheme: dark;
 }
 * {
   box-sizing: border-box;
@@ -31,8 +222,7 @@ a {
   padding: 26px 3.2vw 22px;
   position: relative;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 89% 5%, rgba(49, 87, 255, 0.52), transparent 30%), var(--ink);
+  background: radial-gradient(circle at 89% 5%, var(--glow), transparent 30%), var(--ink);
 }
 .hero:after {
   content: "";
@@ -102,7 +292,7 @@ a {
     10px/1.55 "DM Mono",
     monospace;
   text-transform: uppercase;
-  color: rgba(244, 240, 231, 0.68);
+  color: var(--muted);
 }
 .hero h1 {
   grid-column: 2/4;
@@ -144,13 +334,13 @@ a {
     10px "DM Mono",
     monospace;
   text-transform: uppercase;
-  color: rgba(244, 240, 231, 0.56);
+  color: var(--text-soft);
 }
 .section {
   padding: 135px 3.2vw;
 }
 .work {
-  background: linear-gradient(180deg, rgba(49, 87, 255, 0.1), transparent 32%), var(--surface);
+  background: linear-gradient(180deg, var(--glow-faint), transparent 32%), var(--surface);
   color: var(--paper);
 }
 .section-intro {
@@ -185,7 +375,7 @@ a {
   position: relative;
 }
 .blue {
-  background: #111b45;
+  background: var(--tint-blue);
   color: var(--paper);
 }
 .cream {
@@ -193,7 +383,7 @@ a {
   color: var(--paper);
 }
 .green {
-  background: #14200c;
+  background: var(--tint-green);
   color: var(--paper);
 }
 .project-art {
@@ -251,7 +441,7 @@ a {
   right: -10%;
   top: -18%;
   border-radius: 50%;
-  background: rgba(49, 87, 255, 0.8);
+  background: var(--blue-soft);
 }
 .project-meta,
 .project-name {
@@ -296,7 +486,7 @@ a {
   margin: 0;
   font-size: 18px;
   line-height: 1.45;
-  color: rgba(244, 240, 231, 0.72);
+  color: var(--text-strong);
 }
 .services {
   grid-column: 2;
@@ -332,7 +522,7 @@ a {
   padding-bottom: 7px;
 }
 .mail-link span {
-  color: var(--acid);
+  color: var(--acid-text);
 }
 footer {
   margin-top: auto;
@@ -349,11 +539,18 @@ footer {
     padding: 20px;
   }
   .nav {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr auto;
+  }
+  .nav .wordmark {
+    grid-row: 1;
+  }
+  .nav-aside {
+    grid-row: 1;
+    grid-column: 2;
   }
   .nav .nav-links {
     display: flex;
-    grid-column: 1;
+    grid-column: 1 / -1;
     justify-content: space-between;
     gap: 12px;
     padding-top: 14px;
@@ -426,15 +623,14 @@ footer {
   transition: color 0.2s;
 }
 .nav-links a:hover {
-  color: var(--acid);
+  color: var(--acid-text);
 }
 .subpage-hero {
   min-height: 78svh;
   padding: 26px 3.2vw;
   position: relative;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 87% 6%, rgba(49, 87, 255, 0.6), transparent 32%), var(--ink);
+  background: radial-gradient(circle at 87% 6%, var(--glow), transparent 32%), var(--ink);
 }
 .subpage-hero:after {
   content: "";
@@ -492,7 +688,7 @@ footer {
 .orbit i {
   position: absolute;
   inset: 0;
-  border: 1px solid rgba(184, 255, 98, 0.6);
+  border: 1px solid var(--acid-line);
   border-radius: 50%;
 }
 .orbit i:nth-child(2) {
@@ -591,8 +787,7 @@ footer {
   min-height: 72svh;
   padding: 26px 3.2vw 55px;
   color: var(--paper);
-  background:
-    radial-gradient(circle at 88% 5%, rgba(49, 87, 255, 0.58), transparent 33%), var(--ink);
+  background: radial-gradient(circle at 88% 5%, var(--glow), transparent 33%), var(--ink);
 }
 .case-study-grid {
   display: grid;
@@ -626,7 +821,7 @@ footer {
 }
 .case-study-body {
   padding: 95px 3.2vw 120px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 35%), var(--surface);
+  background: linear-gradient(180deg, var(--highlight), transparent 35%), var(--surface);
 }
 .case-study-body > .eyebrow {
   color: var(--muted);
@@ -678,7 +873,7 @@ footer {
   font:
     10px "DM Mono",
     monospace;
-  color: var(--acid);
+  color: var(--acid-text);
 }
 .case-study-sections h2 {
   margin: 0 0 13px;
@@ -791,7 +986,7 @@ footer {
     10px "DM Mono",
     monospace;
   text-transform: uppercase;
-  color: rgba(244, 240, 231, 0.56);
+  color: var(--text-soft);
 }
 @media (max-width: 720px) {
   .subpage-footer {
@@ -874,7 +1069,7 @@ footer {
   min-height: 44px;
   border: 1px solid var(--acid);
   background: var(--acid);
-  color: var(--ink);
+  color: var(--on-acid);
   padding: 15px 18px;
   justify-self: start;
   font:
@@ -886,7 +1081,7 @@ footer {
 .community-button:hover,
 .community-button:focus-visible {
   background: var(--acid);
-  color: var(--ink);
+  color: var(--on-acid);
   outline: 2px solid var(--blue);
   outline-offset: 2px;
 }
@@ -897,7 +1092,7 @@ footer {
   margin-top: 20px;
 }
 .community-error {
-  color: #ff9f8a;
+  color: var(--danger);
   margin: 0;
 }
 @media (max-width: 720px) {
@@ -915,8 +1110,7 @@ footer {
 .workbench {
   min-height: 100svh;
   padding: 30px 3.2vw 90px;
-  background:
-    radial-gradient(circle at 88% 3%, rgba(49, 87, 255, 0.25), transparent 26%), var(--surface);
+  background: radial-gradient(circle at 88% 3%, var(--glow-soft), transparent 26%), var(--surface);
   color: var(--paper);
 }
 .workbench-head {
@@ -977,10 +1171,10 @@ footer {
   border-right: 0;
 }
 .workbench-steps b {
-  color: var(--acid);
+  color: var(--acid-text);
 }
 .workbench-steps button[aria-current="step"] {
-  color: var(--acid);
+  color: var(--acid-text);
 }
 .workbench-grid,
 .workbench-form {
@@ -1102,7 +1296,7 @@ footer {
 .job-import-form {
   padding: 22px;
   border: 1px solid var(--line);
-  background: rgba(21, 21, 26, 0.7);
+  background: var(--surface-glass);
 }
 .import-tabs {
   grid-column: 1/-1;
@@ -1122,8 +1316,8 @@ footer {
   cursor: pointer;
 }
 .import-tabs button[aria-pressed="true"] {
-  border-color: var(--acid);
-  color: var(--acid);
+  border-color: var(--acid-text);
+  color: var(--acid-text);
 }
 .job-preview {
   margin-top: 34px !important;
@@ -1318,9 +1512,9 @@ footer {
 .scroll-platform {
   min-height: 100svh;
   background:
-    radial-gradient(circle at 78% 10%, rgba(49, 87, 255, 0.22), transparent 24%),
-    radial-gradient(circle at 16% 48%, rgba(184, 255, 98, 0.07), transparent 22%),
-    linear-gradient(145deg, var(--ink) 0%, #0b0b0f 52%, #101015 100%);
+    radial-gradient(circle at 78% 10%, var(--glow-soft), transparent 24%),
+    radial-gradient(circle at 16% 48%, var(--glow-acid), transparent 22%),
+    linear-gradient(145deg, var(--ink) 0%, var(--bg-mid) 52%, var(--bg-end) 100%);
 }
 .site-header {
   position: fixed;
@@ -1329,19 +1523,15 @@ footer {
   right: 0;
   left: 0;
   padding: 20px 3.2vw;
-  background: linear-gradient(
-    to bottom,
-    rgba(8, 8, 10, 0.92),
-    rgba(8, 8, 10, 0.62) 72%,
-    transparent
-  );
-  backdrop-filter: blur(14px);
+  background: linear-gradient(to bottom, var(--glass-top), var(--glass-bottom) 72%, transparent);
+  border-bottom: 1px solid var(--glass-line);
+  backdrop-filter: blur(var(--glass-blur));
 }
 .site-header .nav {
   min-height: 32px;
 }
 .nav-links a[aria-current="page"] {
-  color: var(--acid);
+  color: var(--acid-text);
 }
 .scroll-platform .hero,
 .scroll-platform .work,
@@ -1440,5 +1630,118 @@ footer {
   .scroll-platform .community-section {
     padding-top: 78px;
     padding-bottom: 78px;
+  }
+}
+
+/* Farbschema-Umschalter (System / Hell / Dunkel) */
+.nav-aside {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.theme-toggle {
+  display: inline-flex;
+  border: 1px solid var(--line);
+  background: var(--surface-glass);
+}
+.theme-toggle button {
+  min-width: 44px;
+  min-height: 32px;
+  padding: 0 10px;
+  border: 0;
+  background: transparent;
+  color: var(--text-soft);
+  font:
+    10px "DM Mono",
+    monospace;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.theme-toggle button:hover {
+  color: var(--paper);
+}
+.theme-toggle button[aria-pressed="true"] {
+  background: var(--acid);
+  color: var(--on-acid);
+}
+.theme-toggle button:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: -2px;
+}
+@media (max-width: 720px) {
+  .theme-toggle button {
+    min-height: 44px;
+  }
+}
+
+/* Zeigerfolger: rein dekorativ, nur bei feinem Zeiger mit Hover, nie klickbar */
+.cursor-glow {
+  position: fixed;
+  top: -14px;
+  left: -14px;
+  z-index: 40;
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--cursor-ring);
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--cursor-glow), transparent 72%);
+  pointer-events: none;
+  opacity: 0;
+  scale: 1;
+  transition:
+    opacity 0.3s ease,
+    scale 0.35s ease;
+  will-change: translate;
+}
+.cursor-glow.is-visible {
+  opacity: 1;
+}
+.cursor-glow.is-active {
+  scale: 2.2;
+}
+@media not ((hover: hover) and (pointer: fine)) {
+  .cursor-glow {
+    display: none;
+  }
+}
+
+/* Sanftes Skalieren bei Hover, nur mit feinem Zeiger */
+@media (hover: hover) and (pointer: fine) {
+  .project,
+  .community-button,
+  .theme-toggle button {
+    transition:
+      translate 0.25s ease,
+      scale 0.25s ease,
+      background-color 0.2s,
+      color 0.2s;
+  }
+  .project:hover {
+    scale: 1.015;
+  }
+  .community-button:hover {
+    translate: 0 -1px;
+  }
+}
+
+/* Reduzierte Bewegung: alle Bewegungen aus */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .cursor-glow {
+    display: none;
+  }
+  .nav-links a,
+  .project,
+  .community-button,
+  .theme-toggle button {
+    transition: none;
+  }
+  .project:hover,
+  .community-button:hover {
+    scale: none;
+    translate: none;
   }
 }
