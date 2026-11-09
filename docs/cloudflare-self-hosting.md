@@ -96,9 +96,10 @@ Erst wenn Schritt 5 zuverlässig funktioniert:
    bzw. durch den von Cloudflare erzeugten Eintrag ersetzen.
 3. Die auskommentierten `routes`-Einträge in `wrangler.production.jsonc`
    aktivieren und erneut deployen.
-4. Erst danach den `on:`-Trigger in `deploy-production.yml` von
-   `workflow_dispatch` auf `push: { branches: [main] }` umstellen, um
-   automatische Deploys aus dem CI heraus zu aktivieren.
+4. Veröffentlicht wird danach über den Branch `deploy`: Jeder Push dorthin
+   startet `deploy-production.yml`. Der Build läuft dabei mit
+   `JNSW_WRANGLER_CONFIG=wrangler.production.jsonc`, damit die erzeugte
+   Worker-Konfiguration die Produktionsbindungen enthält.
 
 **Wichtig:** Schritt 6 ist eine Produktions-DNS-Änderung mit direkter Wirkung
 auf die live erreichbare Seite. Erst ausführen, wenn Schritt 1–5 vollständig
