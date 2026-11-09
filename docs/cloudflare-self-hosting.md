@@ -1,8 +1,14 @@
 # Eigenständiger Betrieb auf Cloudflare (unabhängig von OpenAI Sites)
 
-## Ausgangslage
+## Stand
 
-Die Produktion von jnsw.de läuft aktuell über die OpenAI-Sites-Hostingplattform:
+Die Umstellung ist erfolgt: `jnsw.de` und `www.jnsw.de` sind seit dem
+09.11.2026 als Custom Domains an den Worker `jnsw-de` gebunden. Die Schritte
+unten bleiben als Anleitung für einen Neuaufbau stehen.
+
+## Ausgangslage vor der Umstellung
+
+Die Produktion von jnsw.de lief über die OpenAI-Sites-Hostingplattform:
 
 - `www.jnsw.de` zeigt per CNAME auf `custom-domains.chatgpt.site`.
 - `.openai/hosting.json` teilt der Sites-Plattform mit, welche D1- und
@@ -88,14 +94,15 @@ funktionieren.
 
 Erst wenn Schritt 5 zuverlässig funktioniert:
 
-1. In Cloudflare unter **Workers & Pages → jnswde → Settings → Domains &
+1. In Cloudflare unter **Workers & Pages → jnsw-de → Settings → Domains &
    Routes** die Domains `jnsw.de` und `www.jnsw.de` als Custom Domain
    hinzufügen. Das erzeugt automatisch die passenden DNS-Einträge in der
    Cloudflare-Zone.
 2. Den bestehenden CNAME `www.jnsw.de → custom-domains.chatgpt.site` entfernen
    bzw. durch den von Cloudflare erzeugten Eintrag ersetzen.
-3. Die auskommentierten `routes`-Einträge in `wrangler.production.jsonc`
-   aktivieren und erneut deployen.
+3. Die `routes`-Einträge in `wrangler.production.jsonc` nennen beide Domains
+   als Custom Domain. Das Muster ist nur der Hostname (`jnsw.de`), Pfade und
+   Wildcards wie `jnsw.de/*` sind dort nicht erlaubt.
 4. Veröffentlicht wird danach über den Branch `deploy`: Jeder Push dorthin
    startet den Cloudflare-Build-Trigger des Workers `jnsw-de`. Der Build läuft
    mit `JNSW_WRANGLER_CONFIG=wrangler.production.jsonc`, damit die erzeugte
