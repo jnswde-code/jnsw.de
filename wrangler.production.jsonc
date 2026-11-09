@@ -5,9 +5,8 @@
   // (siehe .openai/hosting.json und docs/cloudflare-self-hosting.md).
   //
   // wrangler.jsonc bleibt unverändert die lokale D1-Simulation für `npm run dev`.
-  // Diese Datei wird nur für `wrangler deploy --config wrangler.production.jsonc`
-  // verwendet, sobald die Platzhalter unten durch echte Cloudflare-Ressourcen-IDs
-  // ersetzt wurden.
+  // Diese Datei gilt für den Produktionsbuild mit
+  // JNSW_WRANGLER_CONFIG=wrangler.production.jsonc (Build-Trigger auf Branch `deploy`).
   "name": "jnsw-de",
   "main": "./worker/index.ts",
   "compatibility_date": "2026-05-22",
@@ -30,11 +29,12 @@
   // `jnsw-de` hat aktuell kein R2-Binding. Sobald `APPLICATION_DOCUMENTS`
   // gebraucht wird (z. B. für die Bewerbungswerkstatt), hier ergänzen:
   // "r2_buckets": [{ "binding": "APPLICATION_DOCUMENTS", "bucket_name": "..." }],
+  // Ausdrücklich gesetzt: Mit Einträgen unter `routes` schaltet Wrangler die
+  // workers.dev-Adresse sonst beim Deploy ab.
+  "workers_dev": true,
   "routes": [
-    // TODO: Custom Domain in Cloudflare für diesen Worker einrichten und hier
-    // eintragen, sobald DNS (www.jnsw.de) von custom-domains.chatgpt.site auf
-    // diesen Worker umgestellt wird. Siehe docs/cloudflare-self-hosting.md.
-    // { "pattern": "jnsw.de/*", "custom_domain": true },
-    // { "pattern": "www.jnsw.de/*", "custom_domain": true },
+    // Custom Domains: nur der Hostname, Pfade und Wildcards sind nicht erlaubt.
+    { "pattern": "jnsw.de", "custom_domain": true },
+    { "pattern": "www.jnsw.de", "custom_domain": true },
   ],
 }
