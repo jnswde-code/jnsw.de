@@ -1,11 +1,10 @@
 name: Deploy production (self-hosted Cloudflare)
 
-# Der Branch `deploy` bildet den Stand der Live-Seite ab: Jeder Push dorthin
-# veröffentlicht auf den Worker aus wrangler.production.jsonc. `main` bleibt
-# der Entwicklungsstand und wird bewusst per Fast-Forward nach `deploy` geholt.
+# Der Branch `deploy` bildet den Stand der Live-Seite ab. Veröffentlicht wird
+# im Normalfall über den Cloudflare-Build-Trigger auf diesem Branch. Dieser
+# Workflow ist nur der manuelle Ersatzweg und braucht die Repo-Secrets
+# CLOUDFLARE_API_TOKEN und CLOUDFLARE_ACCOUNT_ID.
 on:
-  push:
-    branches: [deploy]
   workflow_dispatch: {}
 
 permissions:
