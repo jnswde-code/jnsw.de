@@ -1,6 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import "./tools/tools.css";
+import { CursorGlow } from "./CursorGlow";
+import { themeInitScript } from "./theme";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://jnsw.de"),
@@ -10,10 +12,21 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", images: ["/og.png"] },
 };
 
+export const viewport: Viewport = {
+  colorScheme: "light dark",
+};
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="de">
-      <body>{children}</body>
+    // `data-theme` wird vom Inline-Skript vor der Hydration gesetzt; React soll das nicht als Fehler melden.
+    <html lang="de" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
+      <body>
+        {children}
+        <CursorGlow />
+      </body>
     </html>
   );
 }
