@@ -179,7 +179,7 @@ Kleine digitale Helfer, die lokal, verständlich und ohne unnötige Konten funkt
 
 ```text
 Titel: Tools für konkrete Aufgaben | JNSW.DE
-Description: Meine digitalen Werkzeuge für klare Aufgaben – einige lokal im Browser, andere als Prototypen oder mit Konto.
+Description: Meine digitalen Werkzeuge: PDF-Werkbank, Prototypen und Support-KI mit Konto.
 
 JNSW.DE / Tools
 Werkzeuge für konkrete Aufgaben.
@@ -370,7 +370,7 @@ Verbindet dich live mit dem Support-KI-Agenten. Ohne laufenden Agenten auf der G
 
 **Vorschlag:** keine Änderung.
 
-> Hinweis: Der heutige Text sagt offen, dass ohne laufenden Agenten keine Antwort kommt. `SupportKiWorkbench.tsx` liegt außerhalb der Dateien von §3.5; dort sind Verarbeitung und LiveKit ausdrücklich ausgenommen.
+> Hinweis: Die Empfehlung in Abschnitt 7 betrifft die Karten- und Dialogtexte aus §3.5; der Name „SimpliSan“ bleibt in dieser Workbench bestehen, solange ihr Text nicht gesondert geändert wird. Der heutige Text sagt offen, dass ohne laufenden Agenten keine Antwort kommt. `SupportKiWorkbench.tsx` liegt außerhalb der Dateien von §3.5; dort sind Verarbeitung und LiveKit ausdrücklich ausgenommen.
 
 ### 5.5 Informationen
 
@@ -465,7 +465,7 @@ Hier entsteht der Community-Bereich von JNSW.DE. Mit einem aktiven Konto erreich
 
 #### CommunityAccount – sichtbare Texte
 
-**Heute** (`app/community/CommunityAccount.tsx:57-118`):
+**Heute** (`app/community/CommunityAccount.tsx:56-118`):
 
 ```text
 Konto
@@ -681,7 +681,7 @@ Titel: Community für digitale Arbeit | JNSW.DE
 
 ```text
 Titel: Community und Bewerbungswerkstatt | JNSW.DE
-Description: Konto anlegen und die Bewerbungswerkstatt erreichen.
+Description: Die Bewerbungswerkstatt mit aktivem Konto erreichen.
 ```
 
 #### PDF-Werkbank und Case Study
