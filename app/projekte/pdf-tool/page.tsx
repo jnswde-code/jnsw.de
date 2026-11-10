@@ -15,7 +15,7 @@ const parts = [
   ],
   [
     "Nutzen",
-    "Die wichtigsten PDF-Grundoperationen lassen sich lokal im Browser erledigen. Dateien müssen nicht hochgeladen werden und es ist kein Konto nötig.",
+    "PDFs verbinden, umbenennen und als ZIP bündeln lässt sich lokal im Browser erledigen. Dateien müssen nicht hochgeladen werden und es ist kein Konto nötig.",
   ],
   [
     "Belegter Stand",
