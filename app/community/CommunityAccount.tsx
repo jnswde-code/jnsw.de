@@ -56,7 +56,7 @@ export function CommunityAccount({ initialUser }: { initialUser: User | null }) 
         <p className="eyebrow">Konto</p>
         <h2>Konto pausiert.</h2>
         <p>
-          Dein Konto ist derzeit nicht aktiv. Schreib uns an{" "}
+          Dein Konto ist derzeit nicht aktiv. Schreib mir an{" "}
           <a href="mailto:hello@jnsw.de">hello@jnsw.de</a>.
         </p>
       </section>
@@ -66,7 +66,10 @@ export function CommunityAccount({ initialUser }: { initialUser: User | null }) 
       <section className="community-account">
         <p className="eyebrow">Mitgliedschaft</p>
         <h2>Willkommen, {user.displayName}.</h2>
-        <p>Dein Konto ist aktiv. Organisiere deine Bewerbungen in einer privaten Arbeitsfläche.</p>
+        <p>
+          Dein Konto ist aktiv. Öffne die Bewerbungswerkstatt, um Bewerbungen und Stellenanzeigen zu
+          organisieren.
+        </p>
         <Link className="community-button" href="/community/bewerbungswerkstatt">
           Bewerbungswerkstatt öffnen
         </Link>
@@ -81,7 +84,7 @@ export function CommunityAccount({ initialUser }: { initialUser: User | null }) 
         <p className="eyebrow">Mitgliedschaft</p>
         <h2 id="community-account-title">E-Mail bestätigen.</h2>
         <p>
-          Wir haben dir einen Link gesendet. Prüfe auch deinen Spam-Ordner – der Link ist 24 Stunden
+          Du bekommst einen Link per E-Mail. Prüfe auch deinen Spam-Ordner – der Link ist 24 Stunden
           gültig.
         </p>
         {message && (
@@ -107,7 +110,7 @@ export function CommunityAccount({ initialUser }: { initialUser: User | null }) 
     <section className="community-account" aria-labelledby="community-account-title">
       <p className="eyebrow">Mitgliedschaft</p>
       <h2 id="community-account-title">Komm dazu.</h2>
-      <p>Mit einem Konto kannst du künftig Community-Angebote nutzen.</p>
+      <p>Mit einem aktiven Konto erreichst du die Bewerbungswerkstatt.</p>
       <div className="community-tabs">
         <button onClick={() => setMode("register")} aria-pressed={mode === "register"}>
           Konto erstellen

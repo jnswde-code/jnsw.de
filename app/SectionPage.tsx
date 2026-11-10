@@ -7,7 +7,7 @@ export function SectionPage({
 }: {
   label: string;
   title: React.ReactNode;
-  intro: string;
+  intro: React.ReactNode;
 }) {
   return (
     <main className="subpage">
@@ -17,7 +17,7 @@ export function SectionPage({
           <p className="eyebrow">
             JNSW.DE / {label}
             <br />
-            Eine offene Sammlung fuer digitale Arbeit.
+            Eine offene Sammlung für digitale Arbeit.
           </p>
           <h1>
             {title}
