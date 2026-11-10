@@ -6,7 +6,7 @@ import { PdfToolLauncher } from "../tools/PdfToolLauncher";
 export const metadata: Metadata = {
   title: "Projekte und Case Studies | JNSW.DE",
   description:
-    "Case Studies von JNSW.DE zeigen Problem, Entscheidung und Umsetzung hinter digitalen Produkten und Werkzeugen.",
+    "Meine Case Studies zu digitalen Werkzeugen – mit Problem, Entscheidung und aktuellem Stand.",
 };
 
 export default function ProjectsPage() {
@@ -17,7 +17,7 @@ export default function ProjectsPage() {
         <div className="case-study-grid">
           <p className="eyebrow">JNSW.DE / PROJEKTE</p>
           <h1>
-            Produkte,
+            Projekte,
             <br />
             <em>klar erklärt.</em>
           </h1>
@@ -43,11 +43,25 @@ export default function ProjectsPage() {
               <span aria-hidden="true">→</span>
             </span>
           </Link>
+          <Link className="project blue" href="/projekte/jw-dev">
+            <span className="project-art" aria-hidden="true">
+              <i className="shape-a" />
+              <i className="shape-b" />
+            </span>
+            <span className="project-meta">
+              <span>Case Study 02</span>
+              <span>jw-dev</span>
+            </span>
+            <span className="project-name">
+              <h2>jw-dev</h2>
+              <span aria-hidden="true">→</span>
+            </span>
+          </Link>
         </div>
         <div className="project-tool-cta">
-          <p className="eyebrow">DAS PRODUKT DAHINTER</p>
-          <h2>PDFs lokal verbinden oder umbenennen.</h2>
-          <p>Eine Funktion wählen, Dateien auswählen, ohne Upload arbeiten.</p>
+          <p className="eyebrow">DAS WERKZEUG DAHINTER</p>
+          <h2>PDF-Werkbank ausprobieren.</h2>
+          <p>PDFs verbinden, umbenennen und als ZIP bündeln – lokal im Browser und ohne Konto.</p>
           <PdfToolLauncher className="button button-primary" />
         </div>
       </section>
