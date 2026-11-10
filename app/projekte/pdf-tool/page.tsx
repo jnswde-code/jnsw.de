@@ -11,19 +11,23 @@ export const metadata: Metadata = {
 const parts = [
   [
     "Problem",
-    "Viele PDF-Dienste verlangen für das Zusammenführen oder Aufbereiten von Dateien einen Upload oder ein Konto.",
+    "Ich will mehrere PDF-Dateien zu einem durchgängigen Dokument verbinden, einzeln umbenennen oder als ZIP bündeln können – ohne dafür einen externen Dienst zu nutzen.",
   ],
   [
-    "Datenschutzentscheidung",
-    "Die Verarbeitung findet ausschließlich lokal im Browser statt. Inhalte, Dateinamen, ZIP-Archive und Ergebnisse verlassen das Gerät nicht.",
+    "Nutzen",
+    "PDFs verbinden, umbenennen und als ZIP bündeln lässt sich lokal im Browser erledigen. Dateien müssen nicht hochgeladen werden und es ist kein Konto nötig.",
   ],
   [
-    "Technische Umsetzung",
-    "Die Werkbank beginnt mit einer Funktionswahl: PDFs verbinden oder umbenennen. Beim Verbinden wird die Reihenfolge festgelegt und ein Downloadname vergeben; beim Umbenennen bündelt ein ZIP-Archiv die Dateien mit ihren neuen Namen.",
+    "Belegter Stand",
+    "Die PDF-Werkbank hat einen eigenen Einstieg und diese Case Study. Sie ist im Werkzeugkasten nicht als Prototyp gekennzeichnet.",
   ],
   [
     "Grenzen",
-    "Passwortgeschützte PDFs funktionieren nicht. Bei sehr großen Dateien entscheidet der verfügbare Arbeitsspeicher des Geräts.",
+    "Die Funktion im Browser wurde nicht live geprüft; ein Betriebsstatus ist daher unbelegt.",
+  ],
+  [
+    "Nächster Schritt",
+    "Öffne die PDF-Werkbank über den Button auf dieser Seite. Dort kannst du zwischen Verbinden und Umbenennen wählen.",
   ],
 ];
 
@@ -37,10 +41,10 @@ export default function PdfToolCaseStudy() {
           <h1>
             Eine PDF-Werkbank,
             <br />
-            das <em>nicht</em> hochlädt.
+            die <em>nicht</em> hochlädt.
           </h1>
           <div className="case-study-intro">
-            <p>Case Study · Produkt, Datenschutz und Umsetzung</p>
+            <p>Case Study · Problem, Nutzen und Stand</p>
             <PdfToolLauncher className="button button-primary" label="Tool ausprobieren →" />
           </div>
         </div>
