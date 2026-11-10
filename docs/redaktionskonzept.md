@@ -1,7 +1,7 @@
 # Redaktionskonzept
 
-Stand: 09.11.2026  
-Status: Vorschlag, noch nicht abgestimmt  
+Stand: 10.11.2026  
+Status: Redaktion abgestimmt (K353–K356, Nutzerauftrag vom 10.11.2026)  
 Faktenquelle: `docs/inhaltsinventar.md` (Basis cb9adf1)
 
 ## 1. Kernbotschaft
@@ -10,7 +10,7 @@ JNSW.DE ist meine persönliche Projektplattform für praktische digitale Werkzeu
 
 ## 2. Tonalität
 
-- Ich-Form als Vorschlag, nüchtern und konkret.
+- Ich-Form gemäß K353, nüchtern und konkret.
 - Keine Team- oder Agenturbehauptungen.
 - Keine Werbesprache, keine erfundenen Zahlen, Referenzen oder Kunden.
 
@@ -80,7 +80,7 @@ Für jeden der sieben Inventar-Einträge gilt der gleiche Aufbau:
 - **Nutzen:** Übersicht über laufende und abgeschlossene KI-gestützte Entwicklungsschritte.
 - **Belegter Stand:** `/projekte/jw-dev` liefert HTTP 404; öffentliche Projektseite existiert noch nicht. CLI-Beschreibung nennt "Dienst und Dashboard für parallele Claude-Sessions" (Orga-Klärung, kein Code-Beleg in diesem Repo).
 - **Grenzen:** Öffentlicher Link, Dashboard, Konto und Datenverarbeitung sind unbelegt.
-- **Nächster Schritt:** Fallstudie vom Nutzer bestätigen lassen, danach die Route `/projekte/jw-dev` anlegen.
+- **Nächster Schritt:** Bestätigte Fallstudie gemäß K354/K355 unter `/projekte/jw-dev` anlegen.
 
 ## 5. Ersatztexte
 
@@ -148,13 +148,13 @@ Case Study 01 · 2026
 PDFs verbinden, umbenennen und als ZIP bündeln, lokal im Browser und ohne Konto.
 → /projekte/pdf-tool
 
-[jw-dev] (nur nach Entscheidung in Abschnitt 7)
+[jw-dev] (gemäß K354/K355 bestätigt)
 Case Study 02
 Dienst und Dashboard für parallele Claude-Sessions: wie ich KI-gestützte Entwicklung organisiere.
 → /projekte/jw-dev
 ```
 
-> Hinweis: Die Verlinkung zu jw-dev erfolgt auf die geplante Route `/projekte/jw-dev`. Ob die Case Study öffentlich verlinkt wird, ist eine der Entscheidungen in Abschnitt 7.
+> Hinweis: Die Verlinkung zu jw-dev erfolgt auf die geplante Route `/projekte/jw-dev`. Die öffentliche Verlinkung ist gemäß K354/K355 bestätigt.
 
 ### 5.4 Tools
 
@@ -336,7 +336,7 @@ Support-KI
 Chat & Sprachdialog · Verbindung über LiveKit · Konto nötig
 ```
 
-> Hinweis: Die Bezeichnung SimpliSan hängt an der Entscheidung in Abschnitt 7.
+> Hinweis: K356 bestätigt „Support-KI“ ohne SimpliSan für Karten und Dialogeinleitungen; die Workbench bleibt vorerst unverändert.
 
 #### Dialogtitel Support-KI
 
@@ -701,7 +701,7 @@ Titel: jw-dev – Dienst und Dashboard für parallele Claude-Sessions | JNSW.DE
 Description: Wie ich parallele Claude-Sessions organisiere und nachvollziehbar mache.
 ```
 
-> Hinweis: Beschreibung und Titel bleiben so allgemein wie die vorliegenden Belege. Der Nutzer muss den Entwurf bestätigen, bevor die Route veröffentlicht wird.
+> Hinweis: Beschreibung und Titel bleiben so allgemein wie die vorliegenden Belege. Der Nutzer hat den allgemeinen Fallstudienentwurf gemäß K355 bestätigt; ein öffentlicher Dashboard-Zugang oder Code-Beleg wird nicht behauptet.
 
 ### 5.11 Startseite: Teaser Tools und Informationen
 
@@ -756,13 +756,13 @@ Case Studies zeigen Problem, Entscheidung und Umsetzung – nicht nur das Ergebn
 Case Study 01 · 2026 · PDF-Werkbank
 PDFs verbinden, umbenennen und als ZIP bündeln, lokal im Browser und ohne Konto.
 
-Case Study 02 · jw-dev (nur nach Entscheidung in Abschnitt 7)
+Case Study 02 · jw-dev (gemäß K354/K355 bestätigt)
 Dienst und Dashboard für parallele Claude-Sessions.
 ```
 
-## 6. Fallstudie jw-dev (Entwurf)
+## 6. Fallstudie jw-dev (bestätigte Redaktion)
 
-> Status: Entwurf – vom Nutzer zu bestätigen, bevor die Route `/projekte/jw-dev` veröffentlicht wird.
+> Status: Redaktion gemäß K354/K355 bestätigt; Umsetzung der Route beauftragt. Ein Deploy ist weiterhin nicht beauftragt.
 
 ### Problem
 
@@ -774,7 +774,7 @@ jw-dev soll als Dienst und Dashboard parallele Claude-Sessions nachvollziehbar m
 
 ### Arbeitsweise (allgemein)
 
-Die Arbeitsweise bleibt bewusst allgemein und steht unter dem Vorbehalt der Bestätigung:
+Die bestätigte Beschreibung der Arbeitsweise bleibt bewusst allgemein:
 
 - **Wellen:** Entwicklungsaufgaben werden in überschaubare Schritte (Wellen) aufgeteilt, damit einzelne Ergebnisse geprüft und dokumentiert werden können.
 - **Dashboard:** Ein zentrales Dashboard zeigt den aktuellen Stand der parallelen Sessions und bereits abgeschlossener Wellen.
@@ -794,9 +794,22 @@ Die Arbeitsweise bleibt bewusst allgemein und steht unter dem Vorbehalt der Best
 
 ### Nächster Schritt
 
-Diesen Entwurf der Fallstudie dem Nutzer vorlegen. Erst nach Freigabe wird die Route `/projekte/jw-dev` angelegt und verlinkt.
+Die Route `/projekte/jw-dev` gemäß bestätigter Redaktion anlegen und verlinken. Keine echten Dashboarddaten veröffentlichen.
 
-## 7. Entscheidungen für den Nutzer
+## 7. Bestätigte Entscheidungen
+
+Am 10.11.2026 bestätigt der Nutzer im Chat: „#36 nach deiner empfehlung“. Beleg: Entscheidungskommentar in [Issue #36](https://github.com/jnswde-code/jnsw.de/issues/36).
+
+| Kennung  | Entscheidung                                                                                                                                                        |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| K353 · A | Ich-Form.                                                                                                                                                           |
+| K354 · B | PDF-Werkbank und jw-dev als Projekte; Prototypen und Support-KI bleiben unter Tools.                                                                                |
+| K355 · B | CLI-Beschreibung als Selbstbeschreibung und allgemeine Fallstudie aus Abschnitt 6. Kein öffentlicher Code-Beleg oder Dashboard-Zugang behauptet.                    |
+| K356 · B | „Support-KI“ ohne SimpliSan in Karten und Dialogeinleitungen, mit LiveKit- und Konto-Hinweis. Workbench bleibt vorerst unverändert und enthält weiterhin SimpliSan. |
+
+Die mit „Vorschlag“ überschriebenen Ersatztexte aus Abschnitt 5 sind damit als redaktionelle Grundlage bestätigt. „Heute“ dokumentiert weiterhin die Basis cb9adf1. §3.3 und §3.4 dürfen starten; Veröffentlichung bleibt gesondert zu beauftragen.
+
+<details><summary>Ursprüngliche Optionen und Empfehlungen</summary>
 
 | Frage                                                                             | Möglichkeiten                                                                                                                                                                                   | Empfehlung                                                                                                                                                      |
 | --------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -804,3 +817,5 @@ Diesen Entwurf der Fallstudie dem Nutzer vorlegen. Erst nach Freigabe wird die R
 | **Welche belegten Projekte werden als Projekte gezeigt?**                         | A) Nur PDF-Werkbank. B) PDF-Werkbank und jw-dev. C) Alle sieben Einträge, auch ohne eigene Route.                                                                                               | **B)**: jw-dev soll als Praxisprojekt sichtbar werden, die Karte erscheint aber erst mit bestätigter Fallstudie. Prototypen und Support-KI bleiben unter Tools. |
 | **Welche öffentlichen Belege gibt es für jw-dev?**                                | A) Keine, die Fallstudie beschreibt nur die Arbeitsweise. B) Die CLI-Beschreibung als Selbstbeschreibung. C) Zusätzlicher öffentlicher Beleg, den du bereitstellst (ohne echte Dashboarddaten). | **B)**: Mehr ist heute nicht öffentlich belegt. C ist möglich, wenn du einen Beleg freigibst.                                                                   |
 | **Wie wird die Support-KI mit der Bezeichnung SimpliSan öffentlich beschrieben?** | A) „Support-KI / SimpliSan“ mit LiveKit- und Konto-Hinweis. B) „Support-KI“ ohne den Namen, mit LiveKit- und Konto-Hinweis. C) Bis zur Klärung gar nicht zeigen.                                | **B)**, bis das Verhältnis zu SimpliSan bestätigt ist; mit Bestätigung A. Die Texte in Abschnitt 5.4 folgen B.                                                  |
+
+</details>
