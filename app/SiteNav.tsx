@@ -5,10 +5,42 @@ import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
 
 const links = [
+  ["Projekte", "projekte"],
   ["Tools", "tools"],
   ["Informationen", "informationen"],
   ["Community", "community"],
 ];
+
+type NavClickEvent = {
+  button: number;
+  metaKey: boolean;
+  ctrlKey: boolean;
+  shiftKey: boolean;
+  altKey: boolean;
+  preventDefault: () => void;
+};
+
+/**
+ * Entscheidet, ob ein Navigationsklick die Seitenscroll-Navigation nutzen darf:
+ * nur auf der Startseite, nur Primärklicks ohne Modifier und nur bei vorhandenem Ziel.
+ */
+function navScrollTargetId(
+  pathname: string,
+  id: string,
+  hasTarget: (id: string) => boolean,
+  event: NavClickEvent,
+): string | null {
+  if (pathname !== "/") return null;
+  if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+    return null;
+  }
+  return hasTarget(id) ? id : null;
+}
+
+function prefersReducedMotion() {
+  const media = window.matchMedia?.("(prefers-reduced-motion: reduce)");
+  return media?.matches === true;
+}
 
 export function SiteNav() {
   const [activeSection, setActiveSection] = useState("top");
@@ -31,36 +63,36 @@ export function SiteNav() {
   }, []);
 
   function scrollToSection(id: string) {
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    document
-      .getElementById(id)
-      ?.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
+    document.getElementById(id)?.scrollIntoView({
+      behavior: prefersReducedMotion() ? "auto" : "smooth",
+      block: "start",
+    });
+  }
+
+  function handleNavClick(event: NavClickEvent, id: string) {
+    const target = navScrollTargetId(
+      window.location.pathname,
+      id,
+      (candidate) => document.getElementById(candidate) !== null,
+      event,
+    );
+    if (!target) return;
+    event.preventDefault();
+    scrollToSection(target);
   }
 
   return (
     <nav className="nav" aria-label="Hauptnavigation">
-      <Link
-        className="wordmark"
-        href="/#top"
-        onClick={(event) => {
-          if (document.getElementById("top")) {
-            event.preventDefault();
-            scrollToSection("top");
-          }
-        }}
-      >
+      <Link className="wordmark" href="/#top" onClick={(event) => handleNavClick(event, "top")}>
         JNSW<span>.DE</span>
       </Link>
       <div className="nav-links">
         {links.map(([label, id]) => (
           <a
-            href={`#${id}`}
+            href={`/#${id}`}
             key={id}
             aria-current={activeSection === id ? "page" : undefined}
-            onClick={(event) => {
-              event.preventDefault();
-              scrollToSection(id);
-            }}
+            onClick={(event) => handleNavClick(event, id)}
           >
             {label}
           </a>
@@ -68,7 +100,7 @@ export function SiteNav() {
       </div>
       <span className="nav-aside">
         <span className="availability">
-          <i /> Verfügbar für ausgewählte Projekte
+          <i /> Persönliche Projektplattform
         </span>
         <ThemeToggle />
       </span>
