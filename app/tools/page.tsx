@@ -3,9 +3,8 @@ import { SiteNav } from "../SiteNav";
 import { ToolsExperience } from "./ToolsExperience";
 
 export const metadata: Metadata = {
-  title: "Digitale Tools für klare Aufgaben | JNSW.DE",
-  description:
-    "Kostenlose, datensparsame Werkzeuge für konkrete digitale Aufgaben – direkt im Browser und ohne unnötige Konten.",
+  title: "Tools für konkrete Aufgaben | JNSW.DE",
+  description: "Meine digitalen Werkzeuge: PDF-Werkbank, Prototypen und Support-KI mit Konto.",
 };
 
 export default function ToolsPage() {
@@ -21,11 +20,12 @@ export default function ToolsPage() {
         <h1>
           Werkzeuge
           <br />
-          für <em>Ideen.</em>
+          für <em>klare Aufgaben.</em>
           <span>.</span>
         </h1>
         <p className="tools-lead">
-          Kleine digitale Helfer, die lokal, verständlich und ohne unnötige Konten funktionieren.
+          Eine Übersicht meiner Werkzeuge. Manche arbeiten lokal im Browser, andere sind Prototypen
+          oder erfordern ein Konto.
         </p>
       </div>
       <ToolsExperience />
