@@ -27,8 +27,8 @@ export function ToolsExperience() {
     <>
       <section className="tools-directory" aria-labelledby="tools-directory-title">
         <div className="tools-directory-heading">
-          <p className="eyebrow">01–04 / Verfügbar</p>
-          <p id="tools-directory-title">Werkzeuge, die eine konkrete Aufgabe lösen.</p>
+          <p className="eyebrow">01–04 / Werkzeuge</p>
+          <p id="tools-directory-title">Vier Ansätze für konkrete Aufgaben.</p>
         </div>
         <button
           ref={pdfTriggerRef}
@@ -38,7 +38,9 @@ export function ToolsExperience() {
         >
           <span className="tool-index">01</span>
           <span className="tool-title">PDF-Werkbank</span>
-          <span className="tool-meta">Verbinden · umbenennen · ZIP · lokal</span>
+          <span className="tool-meta">
+            Verbinden · umbenennen · ZIP · lokal im Browser · ohne Konto
+          </span>
           <span className="tool-arrow" aria-hidden="true">
             ↗
           </span>
@@ -51,7 +53,7 @@ export function ToolsExperience() {
         >
           <span className="tool-index">02</span>
           <span className="tool-title">Wohnungssuche-Assistent</span>
-          <span className="tool-meta">Prototyp · Mock-Daten · Freigabe-Queue</span>
+          <span className="tool-meta">Prototyp · Beispieldaten · kein Backend</span>
           <span className="tool-arrow" aria-hidden="true">
             ↗
           </span>
@@ -64,7 +66,7 @@ export function ToolsExperience() {
         >
           <span className="tool-index">03</span>
           <span className="tool-title">Abfrage-Konfigurator</span>
-          <span className="tool-meta">Prototyp · Regelbaum · Text-Abfrage</span>
+          <span className="tool-meta">Prototyp · Beispieldaten · Regelbaum-Editor</span>
           <span className="tool-arrow" aria-hidden="true">
             ↗
           </span>
@@ -77,7 +79,9 @@ export function ToolsExperience() {
         >
           <span className="tool-index">04</span>
           <span className="tool-title">Support-KI</span>
-          <span className="tool-meta">Chat & Sprachdialog · SimpliSan Support</span>
+          <span className="tool-meta">
+            Chat & Sprachdialog · Verbindung über LiveKit · Konto nötig
+          </span>
           <span className="tool-arrow" aria-hidden="true">
             ↗
           </span>
@@ -100,7 +104,7 @@ export function ToolsExperience() {
               <h2 id="pdf-workspace-title">PDF-Werkbank</h2>
             </div>
             <p className="workspace-privacy">
-              <span aria-hidden="true">●</span> Verarbeitung lokal im Browser
+              <span aria-hidden="true">●</span> Verarbeitung lokal im Browser · Kein Konto nötig
             </p>
             <button
               type="button"
@@ -134,7 +138,7 @@ export function ToolsExperience() {
               <h2 id="wohnung-workspace-title">Wohnungssuche-Assistent</h2>
             </div>
             <p className="workspace-privacy">
-              <span aria-hidden="true">●</span> Prototyp · Mock-Daten, kein Backend
+              <span aria-hidden="true">●</span> Prototyp · Beispieldaten, kein Backend
             </p>
             <button
               type="button"
@@ -202,7 +206,7 @@ export function ToolsExperience() {
               <h2 id="support-ki-workspace-title">Support-KI</h2>
             </div>
             <p className="workspace-privacy">
-              <span aria-hidden="true">●</span> Live-Verbindung via LiveKit
+              <span aria-hidden="true">●</span> Verbindung über LiveKit · Nur mit aktivem Konto
             </p>
             <button
               type="button"
