@@ -6,6 +6,7 @@ const publicRoutes = [
   "/tools/pdf-zusammenfuegen",
   "/projekte",
   "/projekte/pdf-tool",
+  "/projekte/jw-dev",
   "/informationen",
   "/community",
 ];
