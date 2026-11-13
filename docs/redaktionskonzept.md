@@ -762,7 +762,7 @@ Dienst und Dashboard für parallele Claude-Sessions.
 
 ## 6. Fallstudie jw-dev (bestätigte Redaktion)
 
-> Status: Redaktion gemäß K354/K355 bestätigt; Umsetzung der Route beauftragt. Ein Deploy ist weiterhin nicht beauftragt.
+> Status: Redaktion gemäß K354/K355 bestätigt; Route `/projekte/jw-dev` im Code angelegt. Ein Deploy ist weiterhin nicht beauftragt.
 
 ### Problem
 
@@ -782,7 +782,7 @@ Die bestätigte Beschreibung der Arbeitsweise bleibt bewusst allgemein:
 
 ### Belegter Stand
 
-- `/projekte/jw-dev` liefert derzeit HTTP 404 (`docs/inhaltsinventar.md`).
+- Die Route `/projekte/jw-dev` ist im Code angelegt (`app/projekte/jw-dev/page.tsx`) und von `/` (`app/page.tsx:81`) sowie `/projekte` (`app/projekte/page.tsx:46`) verlinkt, aber noch nicht veröffentlicht. Nach dem Inventarstand `docs/inhaltsinventar.md` lieferte sie zuletzt HTTP 404.
 - Das Repo `jnswde-code/jw-dev` ist privat.
 - Die CLI-Beschreibung lautet "Dienst und Dashboard für parallele Claude-Sessions" (Orga-Klärung, kein Code-Beleg in diesem Repo).
 
@@ -794,7 +794,7 @@ Die bestätigte Beschreibung der Arbeitsweise bleibt bewusst allgemein:
 
 ### Nächster Schritt
 
-Die Route `/projekte/jw-dev` gemäß bestätigter Redaktion anlegen und verlinken. Keine echten Dashboarddaten veröffentlichen.
+Die Veröffentlichung der Route `/projekte/jw-dev` gesondert beauftragen. Keine echten Dashboarddaten veröffentlichen.
 
 ## 7. Bestätigte Entscheidungen
 
@@ -807,7 +807,7 @@ Am 10.11.2026 bestätigt der Nutzer im Chat: „#36 nach deiner empfehlung“. B
 | K355 · B | CLI-Beschreibung als Selbstbeschreibung und allgemeine Fallstudie aus Abschnitt 6. Kein öffentlicher Code-Beleg oder Dashboard-Zugang behauptet.                    |
 | K356 · B | „Support-KI“ ohne SimpliSan in Karten und Dialogeinleitungen, mit LiveKit- und Konto-Hinweis. Workbench bleibt vorerst unverändert und enthält weiterhin SimpliSan. |
 
-Die mit „Vorschlag“ überschriebenen Ersatztexte aus Abschnitt 5 sind damit als redaktionelle Grundlage bestätigt. „Heute“ dokumentiert weiterhin die Basis cb9adf1. §3.3 und §3.4 dürfen starten; Veröffentlichung bleibt gesondert zu beauftragen.
+Die mit „Vorschlag“ überschriebenen Ersatztexte aus Abschnitt 5 sind damit als redaktionelle Grundlage bestätigt. „Heute“ dokumentiert weiterhin die Basis cb9adf1. §3.3 und §3.4 dürfen starten; die Route `/projekte/jw-dev` ist im Code angelegt und verlinkt, aber noch nicht veröffentlicht; ihre Veröffentlichung bleibt gesondert zu beauftragen.
 
 <details><summary>Ursprüngliche Optionen und Empfehlungen</summary>
 

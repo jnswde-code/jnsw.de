@@ -1,6 +1,8 @@
 ﻿# JNSW.DE
 
-JNSW.DE ist eine deutschsprachige Portfolio- und Community-Website für digitale Produkte, Markenidentitäten, Werkzeuge und Informationen.
+JNSW.DE ist meine persönliche Projektplattform für praktische digitale Werkzeuge und nachvollziehbare KI-gestützte Entwicklung. Im Vordergrund steht der Nutzen für konkrete Aufgaben, nicht die Technik dahinter.
+
+Die Website ist deutschsprachig und verbindet Portfolio, Werkzeuge, Informationen und Community. Routen: `/` (mit dem Abschnitt `/#projekte`), `/tools`, `/tools/pdf-zusammenfuegen`, `/projekte`, `/projekte/pdf-tool`, `/projekte/jw-dev` (im Code angelegt, noch nicht veröffentlicht), `/informationen` und `/community`.
 
 Die Anwendung ist zugleich ein öffentliches Praxisprojekt für moderne Webentwicklung: eine TypeScript-/Next.js-Anwendung auf Cloudflare Workers mit D1-Datenbank, versionierten Migrationen, automatisierten Prüfungen und dokumentierten Sicherheitsentscheidungen.
 
@@ -51,12 +53,16 @@ npm exec wrangler -- d1 migrations apply DB --local --persist-to .wrangler/state
 npm exec wrangler -- d1 migrations list DB --local --persist-to .wrangler/state
 ```
 
-Lokale D1-Daten liegen unter `.wrangler/state` und sind nicht versioniert. Produktionsmigrationen werden ausschließlich über den später festzulegenden Deployment-Prozess ausgeführt; keine Produktions-ID oder Secrets gehören in dieses Repository.
+Lokale D1-Daten liegen unter `.wrangler/state` und sind nicht versioniert. Produktionsmigrationen laufen vor dem Push auf den Branch `deploy` und sind nicht Teil des Build-Triggers ([Abschnitt Veröffentlichung](#veröffentlichung), [`docs/cloudflare-self-hosting.md`](docs/cloudflare-self-hosting.md)); keine Produktions-ID oder Secrets gehören in dieses Repository.
 
 `wrangler.jsonc` beschreibt ausschließlich die lokale D1-Simulation. Die Produktion erhält die
 Binding `DB` ausschließlich über `.openai/hosting.json` und Sites. Deshalb sind direkte
 `wrangler d1 ... --remote`-Befehle aus diesem Repository nicht zulässig: Sie könnten nie die von
 Sites verwaltete Produktionsdatenbank zuverlässig adressieren.
+
+## Veröffentlichung
+
+Veröffentlicht wird über den Branch `deploy`. Jeder Push auf diesen Branch startet den Cloudflare-Build-Trigger des Workers `jnsw-de`. D1-Migrationen sind nicht Teil des Triggers und laufen vor dem Push. Der Workflow [`.github/workflows/deploy-production.yml`](.github/workflows/deploy-production.yml) ist der manuelle Ersatzweg und wird über `workflow_dispatch` gestartet. Einzelheiten stehen in [`docs/cloudflare-self-hosting.md`](docs/cloudflare-self-hosting.md). Ob der Build-Trigger im Cloudflare-Dashboard aktiv ist, ist im Repo nicht belegt.
 
 ## Sicherheitsregeln
 
