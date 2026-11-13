@@ -6,9 +6,10 @@ import { themeInitScript } from "./theme";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://jnsw.de"),
-  title: "JNSW.DE — Digital products & identities",
-  description: "JNSW.DE gestaltet Marken und digitale Erlebnisse für Menschen, die etwas vorhaben.",
-  openGraph: { title: "JNSW.DE — Digital products & identities", images: ["/og.png"] },
+  title: "JNSW.DE — Persönliche Projektplattform",
+  description:
+    "Meine digitalen Werkzeuge, Case Studies und Hintergründe zu KI-gestützter Entwicklung.",
+  openGraph: { title: "JNSW.DE — Persönliche Projektplattform", images: ["/og.png"] },
   twitter: { card: "summary_large_image", images: ["/og.png"] },
 };
 
