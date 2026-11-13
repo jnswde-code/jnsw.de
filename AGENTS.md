@@ -2,9 +2,9 @@
 
 ## Projektzweck
 
-JNSW.DE ist eine deutschsprachige Portfolio- und Community-Plattform für digitale Produkte, Werkzeuge und Informationen.
+JNSW.DE ist meine persönliche Projektplattform für praktische digitale Werkzeuge und nachvollziehbare KI-gestützte Entwicklung. Im Vordergrund steht der Nutzen für konkrete Aufgaben, nicht die Technik dahinter.
 
-Die öffentliche Haupterfahrung ist eine zusammenhängende One-Page-Plattform unter `/`. Projekte, Tools, Informationen und Community sind Scroll-Abschnitte derselben Seite. Das feste Menü fokussiert diese Abschnitte per Smooth-Scroll ohne Seitenwechsel. Detailrouten wie `/tools/pdf-zusammenfuegen` und `/projekte/pdf-tool` bleiben als direkte Einstiege für einzelne Produkte und Case Studies bestehen.
+Die öffentliche Haupterfahrung ist eine zusammenhängende deutschsprachige One-Page-Plattform unter `/`. Projekte, Tools, Informationen und Community sind Scroll-Abschnitte derselben Seite. Das feste Menü fokussiert diese Abschnitte per Smooth-Scroll ohne Seitenwechsel. Detailrouten wie `/tools/pdf-zusammenfuegen` und `/projekte/pdf-tool` bleiben als direkte Einstiege für einzelne Produkte und Case Studies bestehen; `/projekte/jw-dev` ist im Code angelegt und noch nicht veröffentlicht.
 
 Zusätzlich existiert eine Backend-Grundlage für Benutzerkonten, Sitzungen und Administration. Eine sichtbare Login-, Profil- oder Admin-Oberfläche ist noch nicht vorhanden.
 
@@ -80,7 +80,7 @@ npm run db:generate
 
 Die verbindliche Gestaltungsrichtlinie liegt in `docs/design-richtlinie.md`; sie geht allgemeinen Stilpräferenzen vor.
 
-- Zwei Farbschemata (hell und dunkel) über `color-scheme`, `light-dark()` und `data-theme` am `<html>`; Umschalter in `app/ThemeToggle.tsx`, Logik und Inline-Skript in `app/theme.ts`. Das dunkle Schema ist die Referenz.
+- Drei Farbschemata – hell, dunkel und System – über `color-scheme`, `light-dark()` und `data-theme` am `<html>`; „System“ folgt `prefers-color-scheme`. Umschalter in `app/ThemeToggle.tsx`, Logik und Inline-Skript in `app/theme.ts`. Das dunkle Schema ist die Referenz.
 - Farben nur über semantische Tokens aus `app/globals.css` (`--ink`, `--surface`, `--surface-raised`, `--paper`, Textabstufungen, `--line`); neue Farben als Paar `--dunkel-*`/`--hell-*` plus Token ergänzen, keine Rohwerte in Komponenten.
 - `--blue` steht für Fokus und räumliche Tiefe; `--acid` ist die Fläche primärer Aktionen (Text darauf `--on-acid`), `--acid-text` die Akzentfarbe für Text, Rahmen und Statussignale.
 - Zeigerfolger in `app/CursorGlow.tsx` und Hover-Skalierung sind dekorativ, nur bei feinem Zeiger und nie bei `prefers-reduced-motion: reduce`.
