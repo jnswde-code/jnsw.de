@@ -53,12 +53,14 @@ npm exec wrangler -- d1 migrations apply DB --local --persist-to .wrangler/state
 npm exec wrangler -- d1 migrations list DB --local --persist-to .wrangler/state
 ```
 
-Lokale D1-Daten liegen unter `.wrangler/state` und sind nicht versioniert. Produktionsmigrationen laufen vor dem Push auf den Branch `deploy` und sind nicht Teil des Build-Triggers ([Abschnitt Veröffentlichung](#veröffentlichung), [`docs/cloudflare-self-hosting.md`](docs/cloudflare-self-hosting.md)); keine Produktions-ID oder Secrets gehören in dieses Repository.
+Lokale D1-Daten liegen unter `.wrangler/state` und sind nicht versioniert. Produktionsmigrationen laufen vor dem Push auf den Branch `deploy` und sind nicht Teil des Build-Triggers ([Abschnitt Veröffentlichung](#veröffentlichung), [`docs/cloudflare-self-hosting.md`](docs/cloudflare-self-hosting.md)); Secrets gehören nicht in dieses Repository.
 
 `wrangler.jsonc` beschreibt ausschließlich die lokale D1-Simulation. Die Produktion erhält die
-Binding `DB` ausschließlich über `.openai/hosting.json` und Sites. Deshalb sind direkte
-`wrangler d1 ... --remote`-Befehle aus diesem Repository nicht zulässig: Sie könnten nie die von
-Sites verwaltete Produktionsdatenbank zuverlässig adressieren.
+Binding `DB` über `wrangler.production.jsonc`; der Build für den Branch `deploy` läuft mit
+`JNSW_WRANGLER_CONFIG=wrangler.production.jsonc`. Produktionsmigrationen gehen deshalb nur mit
+`--config wrangler.production.jsonc` (so auch in `deploy-production.yml`), nie mit der lokalen
+`wrangler.jsonc`. `.openai/hosting.json` stammt aus dem früheren Sites-Hosting und wird für die
+Produktion nicht mehr gelesen.
 
 ## Veröffentlichung
 
